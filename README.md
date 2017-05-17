@@ -1,2 +1,2 @@
-# genesis-simple-faq
-genesis-simple-faq
+# plugin-boilerplate
+A boilerplate for new WordPress plugins

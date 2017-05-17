@@ -1,0 +1,35 @@
+{
+  "name": "plugin-boilerplate",
+  "description": "Development files for the Plugin Boilerplate plugin.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/copyblogger/plugin-boilerplate"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "*",
+    "grunt-checktextdomain": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-imagemin": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-csscomb": "*",
+    "grunt-jsbeautifier": "*",
+    "grunt-jsvalidate": "*",
+    "grunt-phplint": "*",
+    "grunt-wp-i18n": "*",
+    "load-grunt-tasks": "*"
+  },
+  "plugin": {
+    "name": "Plugin Boilerplate",
+    "uri": "https://github.com/copyblogger/plugin-boilerplate",
+    "description": "A simple boilerplate for new WordPress plugins.",
+    "author": "Rainmaker Digital, LLC.",
+    "authoruri": "http://www.rainmakerdigital.com/",
+    "version": "0.9.0",
+    "license": "GPL-2.0+",
+    "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
+    "textdomain": "plugin-boilerplate"
+  }
+}
