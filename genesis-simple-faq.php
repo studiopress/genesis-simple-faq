@@ -1,14 +1,15 @@
 <?php
 /*
-Plugin Name: Plugin Boilerplate
-Plugin URI: https://github.com/copyblogger/plugin-boilerplate
-Description: A simple boilerplate for new WordPress plugins.
-Author: Nathan Rice
-Author URI: http://nathanrice.net/
+Plugin Name: Genesis Simple FAQ
+Plugin URI: https://github.com/copyblogger/genesis-simple-faq
+Description: A plugin for the Genesis Framework to manage FAQ components.
+Author: Rainmaker Digital
+Author: Calvin Koepke
+Author URI: http://rainmakerdigital.com/
 
 Version: 0.9.0
 
-Text Domain: plugin-boilerplate
+Text Domain: genesis-simple-faq
 Domain Path: /languages
 
 License: GPL-2.0+
@@ -20,7 +21,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
  * @since 0.9.0
  */
-final class Plugin_Boilerplate {
+final class Genesis_Simple_FAQ {
 
 	/**
 	 * Plugin version
@@ -30,7 +31,7 @@ final class Plugin_Boilerplate {
 	/**
 	 * The plugin textdomain, for translations.
 	 */
-	public $plugin_textdomain = 'plugin-boilerplate';
+	public $plugin_textdomain = 'genesis-simple-faq';
 
 	/**
 	 * The url to the plugin directory.
@@ -102,7 +103,7 @@ final class Plugin_Boilerplate {
 	 */
 	public function includes() {
 
-		require_once( $this->plugin_dir_path . 'includes/functions.php' );
+		// require_once( $this->plugin_dir_path . 'includes/functions.php' );
 
 	}
 
@@ -118,8 +119,8 @@ final class Plugin_Boilerplate {
 		 *
 		 * Use this section to create the object after including the class file.
 		 */
-		require_once( $this->plugin_dir_path . 'includes/class-plugin-boilerplate-feature.php' );
-		$this->plugin_boilerplate_feature = new Plugin_Boilerplate_Feature;
+		require_once( $this->plugin_dir_path . 'includes/class-genesis-simple-faq-shortcode.php' );
+		$this->plugin_boilerplate_feature = new Genesis_Simple_FAQ_Shortcode;
 
 		/**
 		 * Plugin or theme depencencies should be loaded via separate methods hooked to actions available in
@@ -127,15 +128,7 @@ final class Plugin_Boilerplate {
 		 *
 		 * In this case, we're loading some Genesis dependent code.
 		 */
-		add_action( 'genesis_setup', array( $this, 'genesis_dependencies' ) );
-
-		/**
-		 * If you need to an a WP-CLI command, do it this way.
-		 */
-		if ( defined( 'WP_CLI' ) && WP_CLI ) {
-			require_once( $this->plugin_dir_path . 'includes/class-plugin-boilerplate-cli-command.php' );
-			WP_CLI::add_command( 'plugin-boilerplate', 'Plugin_Boilerplate_CLI_Command' );
-		}
+		// add_action( 'genesis_setup', array( $this, 'genesis_dependencies' ) );
 
 	}
 
@@ -144,13 +137,13 @@ final class Plugin_Boilerplate {
 	 *
 	 * @since 0.9.0
 	 */
-	public function genesis_dependencies() {
-
-		require_once( $this->plugin_dir_path . 'includes/class-plugin-boilerplate-ajax.php' );
-		$this->plugin_boilerplate_ajax = new Plugin_Boilerplate_AJAX;
-		$this->plugin_boilerplate_ajax();
-
-	}
+	// public function genesis_dependencies() {
+	//
+	// 	require_once( $this->plugin_dir_path . 'includes/class-plugin-boilerplate-ajax.php' );
+	// 	$this->plugin_boilerplate_ajax = new Plugin_Boilerplate_AJAX;
+	// 	$this->plugin_boilerplate_ajax();
+	//
+	// }
 
 }
 
@@ -159,12 +152,12 @@ final class Plugin_Boilerplate {
  *
  * @since 0.9.0
  */
-function Plugin_Boilerplate() {
+function Genesis_Simple_FAQ() {
 
 	static $object;
 
 	if ( null == $object ) {
-		$object = new Plugin_Boilerplate;
+		$object = new Genesis_Simple_FAQ;
 	}
 
 	return $object;
@@ -174,4 +167,4 @@ function Plugin_Boilerplate() {
 /**
  * Initialize the object on	`plugins_loaded`.
  */
-add_action( 'plugins_loaded', array( Plugin_Boilerplate(), 'init' ) );
+add_action( 'plugins_loaded', array( Genesis_Simple_FAQ(), 'init' ) );
