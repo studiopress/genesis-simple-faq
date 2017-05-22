@@ -1,7 +1,8 @@
 <?php
-
 /**
- * A feature class.
+ * Class to handle shortcode creation, rendering, and asset loading.
+ *
+ * @since 0.9.0
  */
 class Genesis_Simple_FAQ_Shortcode {
 
@@ -23,30 +24,36 @@ class Genesis_Simple_FAQ_Shortcode {
 
 	/**
 	 * Shortcode builder function.
+	 *
 	 * @param  array   $atts    Array of passed in attributes.
-	 * @return string  $output  String of HTML to output.
+	 * @param  array   $content The content the shortcode is wrapped around.
+	 * @return string  $faq     String of HTML to output.
+	 *
+	 * @since 0.9.0
 	 */
-	function genesis_simple_faq_shortcode($atts) {
+	function genesis_simple_faq_shortcode( $atts, $content = "" ) {
 
 		$a = shortcode_atts( array(
-			'question' => '',
-			'answer'   => '',
+			'title' => __( 'Show Hidden Content', 'genesis-simple-faq' ),
 		), $atts );
 
-		// Return empty string if question/answer parameters are not there.
-		if ( empty( $a['question'] ) || empty( $a['answer'] ) ) {
-			return '';
-		}
+		$faq = sprintf( '<div class="genesis-simple-faq">
+					<button class="genesis-simple-faq__question" aria-expanded="false">%s</button>
+					<div class="genesis-simple-faq__answer" aria-expanded="false">%s</div>
+				</div>
+		', esc_html( $a['title'] ), $content );
 
-		?>
-		<div class="genesis-simple-faq">
-			<button class="genesis-simple-faq__question" aria-expanded="false"><?php echo esc_html( $a['question'] ); ?></button>
-			<div class="genesis-simple-faq__answer" aria-expanded="false"><?php echo $a['answer']; ?></div>
-		</div>
-		<?php
+		return apply_filters( 'genesis_simple_faq_output', $faq, $a, $content );
 
 	}
 
+	/**
+	 * Load the scripts and styles on the front-end if required.
+	 *
+	 * @return void
+	 *
+	 * @since 0.9.0
+	 */
 	function genesis_simple_faq_scripts() {
 
 		global $post;

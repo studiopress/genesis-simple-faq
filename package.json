@@ -8,7 +8,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "grunt": "*",
+    "grunt": "^1.0.1",
     "grunt-checktextdomain": "*",
     "grunt-contrib-cssmin": "*",
     "grunt-contrib-imagemin": "*",
