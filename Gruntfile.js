@@ -82,6 +82,24 @@ module.exports = function(grunt) {
 			}
 		},
 
+		uglify: {
+			options: {
+				mangle: {
+					reserved: ['jQuery']
+				}
+			},
+		    my_target: {
+		      files: [{
+		        expand: true,
+		        cwd: 'assets/js',
+		        src: '*.js',
+		        dest: 'assets/js/min',
+				rename: function (dest, src) {
+					return dest + '/' + src.replace( '.js', '.min.js' );
+				}
+		      }]
+		    }
+		  }
 
 	});
 
