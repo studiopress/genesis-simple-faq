@@ -6,7 +6,7 @@ Adding a FAQ is very easy, just use the following syntax:
 
 `[genesis_faq title="Question Here."]
 Answer paragraph goes here and it can be long.
-[/gensis_faq]`
+[/genesis_faq]`
 
 ## Filters
 Currently, there's three filters: one to toggle JS animation on or off, one to control critical CSS output, and one to control the default FAQ markup.
