@@ -87,26 +87,26 @@ class Genesis_Simple_FAQ_Shortcode {
 	 */
 	function genesis_simple_faq_print_styles() {
 
-		$css = sprintf(
-			'<style type="text/css">
-				.genesis-simple-faq {
-					padding: 5px 0;
-				}
+		$styles = sprintf(
+			'.genesis-simple-faq {
+				padding: 5px 0;
+			}
 
-				.genesis-simple-faq__question {
-					display: block;
-					text-align: left;
-					width: 100%%;
-				}
+			.genesis-simple-faq__question {
+				display: block;
+				text-align: left;
+				width: 100%%;
+			}
 
-				.genesis-simple-faq__answer {
-					display: none;
-					padding: 5px;
-				}
-			</style>'
+			.genesis-simple-faq__answer {
+				display: none;
+				padding: 5px;
+			}'
 		);
 
-		echo apply_filters( 'genesis_simple_faq_print_styles', $this->minifyCSS( $css ) );
+		$css = sprintf( '<style type="text/css" id="genesis-simple-faq-critical">%s</style>', apply_filters( 'genesis_simple_faq_print_styles', $this->minifyCSS( $styles ) ) );
+
+		echo $css;
 
 	}
 
