@@ -23,7 +23,7 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		// Register and maybe load scripts.
 		add_action( 'wp_enqueue_scripts', array( $this, 'genesis_simple_faq_register_scripts' ) );
-		add_action( 'genesis_meta', array( $this, 'genesis_simple_faq_load_content_scripts' ) );
+		add_action( 'genesis_before', array( $this, 'genesis_simple_faq_load_content_scripts' ) );
 
 		// Include widget support for shortcode and asset loading.
 		add_filter( 'widget_text',        array( $this, 'genesis_simple_faq_load_widget_scripts'  ) );
