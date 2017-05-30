@@ -1,0 +1,36 @@
+{
+  "name": "genesis-simple-faq",
+  "description": "A simple plugin for the Genesis Framework to manage FAQ components.",
+  "version": "0.9.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/copyblogger/genesis-simple-faq"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-checktextdomain": "*",
+    "grunt-contrib-cssmin": "*",
+    "grunt-contrib-imagemin": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-csscomb": "*",
+    "grunt-jsbeautifier": "*",
+    "grunt-jsvalidate": "*",
+    "grunt-phplint": "*",
+    "grunt-wp-i18n": "*",
+    "load-grunt-tasks": "*"
+  },
+  "plugin": {
+    "name": "Genesis Simple FAQ",
+    "uri": "https://github.com/copyblogger/genesis-simple-faq",
+    "description": "A simple plugin for the Genesis Framework to manage FAQ components.",
+    "author": "Rainmaker Digital, LLC.",
+    "authoruri": "http://www.rainmakerdigital.com/",
+    "version": "0.9.0",
+    "license": "GPL-2.0+",
+    "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
+    "textdomain": "genesis-simple-faq"
+  }
+}
