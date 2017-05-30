@@ -66,12 +66,12 @@ class Genesis_Simple_FAQ_Shortcode {
 	function genesis_simple_faq_register_scripts() {
 
 		$vanilla_path = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
-			? 'min/vanilla.genesis-simple-faq.min.js'
-			: 'vanilla.genesis-simple-faq.js';
+			? 'vanilla.genesis-simple-faq.js'
+			: 'min/vanilla.genesis-simple-faq.min.js';
 
 		$jquery_path = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
-			? 'min/jquery.genesis-simple-faq.min.js'
-			: 'jquery.genesis-simple-faq.js';
+			? 'jquery.genesis-simple-faq.js'
+			: 'min/jquery.genesis-simple-faq.min.js';
 
 		wp_register_script( 'genesis-simple-faq-jquery-js', plugin_dir_url( __FILE__ ) . '../assets/js/' . $jquery_path, array( 'jquery' ), '0.9.0', true );
 		wp_register_script( 'genesis-simple-faq-vanilla-js', plugin_dir_url( __FILE__ ) . '../assets/js/' . $vanilla_path, array(), '0.9.0', true );
