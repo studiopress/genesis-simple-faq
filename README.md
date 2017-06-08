@@ -2,10 +2,10 @@
 A simple plugin to handle FAQ layout and interaction with a shortcode.
 
 ## Usage
-Adding a FAQ is very easy, just use the following syntax:
+Adding an FAQ is very easy, just use the following syntax:
 
-`[genesis_faq title="Question Here."]
-Answer paragraph goes here and it can be long.
+`[genesis_faq title="Your question goes here?"]
+Your answer goes here. It can span multiple paragraphs.
 [/genesis_faq]`
 
 ## Filters
@@ -14,7 +14,9 @@ Currently, there are three filters: one to toggle JS animation on or off, one to
 ### JS Animation (jQuery Only)
 By default, animation is set to true. To remove JS animation and rely on classes, add the following to your `functions.php` file:
 
-`add_filter( 'genesis_simple_faq_animation', false )`
+```php
+add_filter( 'genesis_simple_faq_js_animation', '__return_false' );
+```
 
 ### Critical CSS
 You can modify the CSS output using the following filter (styles are minified on the front-end):
@@ -46,17 +48,26 @@ function your_custom_function( $styles ) {
 ```
 
 ### Default Markup
-The following filter accepts 3 parameters:
-- `$faq`: String of HTML to output.
-- `$a`: Array of passed in attributes (default item is `$a['title']`).
-- `$content`: The content the shortcode is wrapped around.
+Alter the markup used for each question and answer with this filter:
+
 ```php
-add_filter( 'genesis_simple_faq_output', 'your_custom_function' );
-function your_custom_function( $faq, $a, $content ) {
+add_filter( 'genesis_simple_faq_output', 'prefix_custom_faq_format', 10, 3 );
+/**
+ * Modify the HTML used in Genesis Simple FAQ questions and answers.
+ *
+ * @param string $output The HTML to output.
+ * @param array  $atts   The attributes from the shortcode.
+ * @param string $answer The content of the shortcode; the answer to the question.
+ * @return string
+ */
+function prefix_custom_faq_format( $output, $atts, $answer ) {
 
-	$faq = 'new markup here';
+	$output = sprintf( '<div class="genesis-simple-faq custom-class">
+					<button class="genesis-simple-faq__question" aria-expanded="false">%s</button>
+					<div class="genesis-simple-faq__answer">%s</div>
+				</div>', esc_html( $atts['title'] ), $answer );
 
-	return $faq;
+	return $output;
 
 }
 ```
