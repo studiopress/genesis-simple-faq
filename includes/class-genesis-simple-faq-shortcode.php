@@ -46,15 +46,11 @@ class Genesis_Simple_FAQ_Shortcode {
 			'title' => __( 'Show Hidden Content', 'genesis-simple-faq' ),
 		), $atts );
 
-		remove_filter( 'the_content', 'wpautop' );
-
 		$faq = sprintf( '<div class="genesis-simple-faq">
 					<button class="genesis-simple-faq__question" aria-expanded="false">%s</button>
 					<div class="genesis-simple-faq__answer" aria-expanded="false">%s</div>
 				</div>
 		', esc_html( $a['title'] ), $content );
-
-		add_filter( 'the_content', 'wpautop' );
 
 		return apply_filters( 'genesis_simple_faq_output', $faq, $a, $content );
 
