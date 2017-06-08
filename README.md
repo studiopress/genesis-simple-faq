@@ -9,7 +9,7 @@ Answer paragraph goes here and it can be long.
 [/genesis_faq]`
 
 ## Filters
-Currently, there's three filters: one to toggle JS animation on or off, one to control critical CSS output, and one to control the default FAQ markup.
+Currently, there are three filters: one to toggle JS animation on or off, one to control critical CSS output, and one to control the default FAQ markup.
 
 ### JS Animation (jQuery Only)
 By default, animation is set to true. To remove JS animation and rely on classes, add the following to your `functions.php` file:
