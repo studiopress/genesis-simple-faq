@@ -2,7 +2,7 @@
 A simple plugin to handle FAQ layout and interaction with a shortcode.
 
 ## Usage
-Adding an FAQ is very easy, just use the following syntax:
+Adding a FAQ is very easy, just use the following syntax:
 
 `[genesis_faq title="Your question goes here?"]
 Your answer goes here. It can span multiple paragraphs.
