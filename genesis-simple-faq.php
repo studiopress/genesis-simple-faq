@@ -43,7 +43,12 @@ final class Genesis_Simple_FAQ {
 	public $plugin_dir_path;
 
 	/**
-	 * Boilerplate feature object.
+	 * Post type object.
+	 */
+	public $genesis_simple_faq_cpt;
+
+	/**
+	 * Shortcode object.
 	 */
 	public $genesis_simple_faq_shortcode;
 
@@ -86,6 +91,9 @@ final class Genesis_Simple_FAQ {
 			wp_die( sprintf( __( 'Sorry, you can\'t activate unless you have installed <a href="%s">Genesis</a>', $this->plugin_textdomain ), 'http://my.studiopress.com/themes/genesis/' ) );
 		}
 
+		// Flush rewrite rules for CPT.
+		flush_rewrite_rules();
+
 	}
 
 	/**
@@ -105,9 +113,13 @@ final class Genesis_Simple_FAQ {
 	public function instantiate() {
 
 		/**
-		 * For each feature, or naturally related groups of features, create a class file that contains a single class.
-		 *
-		 * Use this section to create the object after including the class file.
+		 * Instance of the Genesis Simple FAQ custom post type.
+		 */
+		require_once( $this->plugin_dir_path . 'includes/class-genesis-simple-faq-cpt.php' );
+		$this->genesis_simple_faq_cpt = new Genesis_Simple_FAQ_CPT;
+
+		/**
+		 * Instance of the Genesis Simple FAQ shortcode.
 		 */
 		require_once( $this->plugin_dir_path . 'includes/class-genesis-simple-faq-shortcode.php' );
 		$this->genesis_simple_faq_shortcode = new Genesis_Simple_FAQ_Shortcode;
