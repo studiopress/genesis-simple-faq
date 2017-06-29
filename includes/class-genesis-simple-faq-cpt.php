@@ -7,7 +7,9 @@
 class Genesis_Simple_FAQ_CPT {
 
 	public function __construct() {
-		add_action( 'init', array( $this, 'genesis_simple_faq_register_cpt' ) );
+		add_action( 'init',                  array( $this, 'register_cpt'             ) );
+		add_action( 'init',                  array( $this, 'add_faq_shortcode_column' ) );
+		add_filter( 'post_updated_messages', array( $this, 'cpt_updated_messages'     ) );
 	}
 
 	/**
@@ -17,8 +19,8 @@ class Genesis_Simple_FAQ_CPT {
 	 *
 	 * @since 0.9.0
 	 */
-	function genesis_simple_faq_register_cpt() {
-		register_post_type( 'genesis-simple-faq', $this->genesis_simple_faq_cpt_args() );
+	function register_cpt() {
+		register_post_type( 'genesis-simple-faq', $this->cpt_args() );
 	}
 
 	/**
@@ -28,7 +30,7 @@ class Genesis_Simple_FAQ_CPT {
 	 *
 	 * @since 0.9.0
 	 */
-	function genesis_simple_faq_cpt_args() {
+	function cpt_args() {
 
 		$args = array(
 			'labels' => array(
@@ -62,6 +64,73 @@ class Genesis_Simple_FAQ_CPT {
 
 		return $args;
 
+	}
+
+	/**
+	 * Function to modify the updated messages for the post type.
+	 *
+	 * @param  array  $messages Existing post update messages.
+	 * @return array            New update messages.
+	 *
+	 * @since 0.9.0
+	 */
+	function cpt_updated_messages( $messages ) {
+
+		$post             = get_post();
+		$post_type        = get_post_type( $post );
+		$post_type_object = get_post_type_object( $post_type );
+
+		$messages['genesis-simple-faq'] = array(
+			1  => __( 'FAQ updated.', 'genesis-simple-faq' ),
+			2  => __( 'Custom field updated.', 'genesis-simple-faq' ),
+			3  => __( 'Custom field deleted.', 'genesis-simple-faq' ),
+			4  => __( 'FAQ updated.', 'genesis-simple-faq' ),
+			5  => isset( $_GET['revision'] ) ? sprintf( __( 'FAQ restored to revision from %s', 'genesis-simple-faq' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			6  => __( 'FAQ published.', 'genesis-simple-faq' ),
+			7  => __( 'FAQ saved.', 'genesis-simple-faq' ),
+			8  => __( 'FAQ submitted.', 'genesis-simple-faq' ),
+			9  => sprintf(
+				__( 'FAQ scheduled for: <strong>%1$s</strong>.', 'genesis-simple-faq' ),
+				date_i18n( __( 'M j, Y @ G:i', 'genesis-simple-faq' ), strtotime( $post->post_date ) )
+			),
+			10 => __( 'FAQ draft updated.', 'genesis-simple-faq' )
+		);
+
+		return $messages;
+	}
+
+	/**
+	 * Function to modify the FAQ's table columns and add a shortcode snippet.
+	 *
+	 *
+	 */
+	function add_faq_shortcode_column() {
+		add_filter( 'manage_genesis-simple-faq_posts_columns',       array( $this, 'faq_shortcode_column_head' ) );
+		add_action( 'manage_genesis-simple-faq_posts_custom_column', array( $this, 'faq_shortcode_column_content' ), 10, 2 );
+	}
+
+	/**
+	 * Filter the post column generation to add the FAQ column.
+	 *
+	 * @param  array $columns  Default array of column headings.
+	 * @return array           Updated array of column headings.
+	 */
+	function faq_shortcode_column_head( $columns ) {
+		$columns['genesis_simple_faq'] = __( 'Shortcode', 'genesis-simple-faq' );
+		return $columns;
+	}
+
+	/**
+	 * Generate the output for the shortcode column.
+	 *
+	 * @param  string $column_name Title of the column.
+	 * @param  int    $post_ID     ID of the current post.
+	 * @return void
+	 */
+	function faq_shortcode_column_content( $column_name, $post_ID ) {
+		if ( 'genesis_simple_faq' === $column_name ) {
+			echo '[genesis_simple_faq id="' . $post_ID . '"]';
+		}
 	}
 
 }

@@ -40,19 +40,45 @@ class Genesis_Simple_FAQ_Shortcode {
 	 *
 	 * @since 0.9.0
 	 */
-	function genesis_simple_faq_shortcode( $atts, $content = "" ) {
+	function genesis_simple_faq_shortcode( $atts ) {
 
 		$a = shortcode_atts( array(
-			'title' => __( 'Show Hidden Content', 'genesis-simple-faq' ),
+			'id' => '',
 		), $atts );
 
-		$faq = sprintf( '<div class="genesis-simple-faq">
-					<button class="genesis-simple-faq__question" aria-expanded="false">%s</button>
-					<div class="genesis-simple-faq__answer" aria-expanded="false">%s</div>
-				</div>
-		', esc_html( $a['title'] ), $content );
+		// If IDs are set, use them. Otherwise retrieve all.
+		$ids = '' !== $a['id'] ? explode( ',', $a['id'] ) : array();
 
-		return apply_filters( 'genesis_simple_faq_output', $faq, $a, $content );
+		// Query arguments.
+		$args = array(
+			'post_type'  => 'genesis-simple-faq',
+			'post__in'   => $ids
+		);
+
+		// The loop.
+		$faqs = new WP_Query( $args );
+
+		if ( $faqs->have_posts() ) {
+
+			$output = '';
+
+			while ( $faqs->have_posts() ) {
+				$faqs->the_post();
+				$output .= sprintf(
+					'<div class="genesis-simple-faq">
+						<button class="genesis-simple-faq__question" aria-expanded="false">%s</button>
+						<div class="genesis-simple-faq__answer" aria-expanded="false">%s</div>
+					</div>', esc_html( get_the_title() ), get_the_content()
+				);
+			}
+		}
+
+		wp_reset_query();
+
+		return $output;
+
+		// Restore this after architecting the markup so users can modify it.
+		// apply_filters( 'genesis_simple_faq_output', $faq, $a, $content );
 
 	}
 
