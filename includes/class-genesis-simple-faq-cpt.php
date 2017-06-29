@@ -18,7 +18,7 @@ class Genesis_Simple_FAQ_CPT {
 	 * @since 0.9.0
 	 */
 	function genesis_simple_faq_register_cpt() {
-		register_post_type( 'genesis-simple-faq', $this->genesis_simple_faq_cpt_args );
+		register_post_type( 'genesis-simple-faq', $this->genesis_simple_faq_cpt_args() );
 	}
 
 	/**
