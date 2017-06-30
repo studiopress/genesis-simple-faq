@@ -43,16 +43,21 @@ class Genesis_Simple_FAQ_Shortcode {
 	function shortcode( $atts ) {
 
 		$a = shortcode_atts( array(
-			'id' => '',
+			'id'  => '',
+			'cat' => '',
 		), $atts );
 
 		// If IDs are set, use them. Otherwise retrieve all.
 		$ids = '' !== $a['id'] ? explode( ',', $a['id'] ) : array();
 
+		// If category IDs are set, use them. Otherwise retrieve all.
+		$cats = '' !== $a['cat'] ? explode( ',', $a['cat'] ) : array();
+
 		// Query arguments.
 		$args = array(
 			'post_type'  => 'gs_faq',
-			'post__in'   => $ids
+			'post__in'   => $ids,
+			'cat'        => $cats,
 		);
 
 		// The loop.
@@ -60,17 +65,28 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		if ( $faqs->have_posts() ) {
 
-			$output = '';
+			$output = '<div class="gs-faq-wrapper">';
 
 			while ( $faqs->have_posts() ) {
 				$faqs->the_post();
-				$output .= sprintf(
+
+				$question = get_the_title();
+				$answer   = get_the_content();
+				$template = sprintf(
 					'<div class="gs-faq">
 						<button class="gs-faq__question" aria-expanded="false">%s</button>
 						<div class="gs-faq__answer" aria-expanded="false">%s</div>
-					</div>', esc_html( get_the_title() ), get_the_content()
+					</div>',
+					esc_html( $question ),
+					$answer
 				);
+				
+				// Allow filtering of the template markup.
+				$output .= apply_filters( 'gs_faq_template', $template, $question, $answer );
 			}
+
+			$output .= '</div>';
+
 		}
 
 		wp_reset_query();
