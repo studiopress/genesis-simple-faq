@@ -3,7 +3,7 @@
 	document.addEventListener( 'DOMContentLoaded', function() {
 
 		// Gather all the FAQ components on the page.
-		var faqs = document.querySelectorAll( '.genesis-simple-faq' );
+		var faqs = document.querySelectorAll( '.gs-faq' );
 
 		/**
 		 * Method to add event handlers and actions to each FAQ component.
@@ -30,8 +30,8 @@
 	 */
 	function setupFaq( faq ) {
 
-		var question = faq.querySelector( '.genesis-simple-faq__question' ),
-			answer   = faq.querySelector( '.genesis-simple-faq__answer'   );
+		var question = faq.querySelector( '.gs-faq__question' ),
+			answer   = faq.querySelector( '.gs-faq__answer'   );
 
 		question.addEventListener( 'mousedown', function() {
 			handleClickEvent( faq );
@@ -53,45 +53,45 @@
 	 */
 	function handleClickEvent( faq ) {
 
-		if ( faq.classList.contains( 'genesis-simple-faq--expanded' ) ) {
+		if ( faq.classList.contains( 'gs-faq--expanded' ) ) {
 
 			// Parent state class.
-			faq.classList.remove( 'genesis-simple-faq--expanded' );
+			faq.classList.remove( 'gs-faq--expanded' );
 
 			// Accessible attributes.
-			faq.querySelector( '.genesis-simple-faq__question' )
+			faq.querySelector( '.gs-faq__question' )
 				.setAttribute( 'aria-expanded', "false" );
-			faq.querySelector( '.genesis-simple-faq__answer' )
+			faq.querySelector( '.gs-faq__answer' )
 				.setAttribute( 'aria-expanded', "false" );
 
 			// Remove expanded classes.
-			faq.querySelector( '.genesis-simple-faq__question' )
-				.classList.remove( 'genesis-simple-faq__question--expanded' );
-			faq.querySelector( '.genesis-simple-faq__answer' )
-				.classList.remove( 'genesis-simple-faq__answer--expanded' );
+			faq.querySelector( '.gs-faq__question' )
+				.classList.remove( 'gs-faq__question--expanded' );
+			faq.querySelector( '.gs-faq__answer' )
+				.classList.remove( 'gs-faq__answer--expanded' );
 
 			// Hide answer.
-			faq.querySelector( '.genesis-simple-faq__answer' ).style.display = 'none';
+			faq.querySelector( '.gs-faq__answer' ).style.display = 'none';
 
 		} else {
 
 			// Parent state class.
-			faq.classList.add( 'genesis-simple-faq--expanded' );
+			faq.classList.add( 'gs-faq--expanded' );
 
 			// Accessible attributes.
-			faq.querySelector( '.genesis-simple-faq__question' )
+			faq.querySelector( '.gs-faq__question' )
 				.setAttribute( 'aria-expanded', "true" );
-			faq.querySelector( '.genesis-simple-faq__answer' )
+			faq.querySelector( '.gs-faq__answer' )
 				.setAttribute( 'aria-expanded', "true" );
 
 			// Add expanded classes.
-			faq.querySelector( '.genesis-simple-faq__question' )
-				.classList.add( 'genesis-simple-faq__question--expanded' );
-			faq.querySelector( '.genesis-simple-faq__answer' )
-				.classList.add( 'genesis-simple-faq__answer--expanded' );
+			faq.querySelector( '.gs-faq__question' )
+				.classList.add( 'gs-faq__question--expanded' );
+			faq.querySelector( '.gs-faq__answer' )
+				.classList.add( 'gs-faq__answer--expanded' );
 
 			// Show answer.
-			faq.querySelector( '.genesis-simple-faq__answer' ).style.display = 'block';
+			faq.querySelector( '.gs-faq__answer' ).style.display = 'block';
 
 		}
 

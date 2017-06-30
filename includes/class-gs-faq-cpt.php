@@ -20,7 +20,7 @@ class Genesis_Simple_FAQ_CPT {
 	 * @since 0.9.0
 	 */
 	function register_cpt() {
-		register_post_type( 'genesis-simple-faq', $this->cpt_args() );
+		register_post_type( 'gs_faq', $this->cpt_args() );
 	}
 
 	/**
@@ -80,7 +80,7 @@ class Genesis_Simple_FAQ_CPT {
 		$post_type        = get_post_type( $post );
 		$post_type_object = get_post_type_object( $post_type );
 
-		$messages['genesis-simple-faq'] = array(
+		$messages['gs_faq'] = array(
 			1  => __( 'FAQ updated.', 'genesis-simple-faq' ),
 			2  => __( 'Custom field updated.', 'genesis-simple-faq' ),
 			3  => __( 'Custom field deleted.', 'genesis-simple-faq' ),
@@ -105,8 +105,8 @@ class Genesis_Simple_FAQ_CPT {
 	 *
 	 */
 	function add_faq_shortcode_column() {
-		add_filter( 'manage_genesis-simple-faq_posts_columns',       array( $this, 'faq_shortcode_column_head' ) );
-		add_action( 'manage_genesis-simple-faq_posts_custom_column', array( $this, 'faq_shortcode_column_content' ), 10, 2 );
+		add_filter( 'manage_gs_faq_posts_columns',       array( $this, 'faq_shortcode_column_head' ) );
+		add_action( 'manage_gs_faq_posts_custom_column', array( $this, 'faq_shortcode_column_content' ), 10, 2 );
 	}
 
 	/**
@@ -116,7 +116,7 @@ class Genesis_Simple_FAQ_CPT {
 	 * @return array           Updated array of column headings.
 	 */
 	function faq_shortcode_column_head( $columns ) {
-		$columns['genesis_simple_faq'] = __( 'Shortcode', 'genesis-simple-faq' );
+		$columns['gs_faq'] = __( 'Shortcode', 'genesis-simple-faq' );
 		return $columns;
 	}
 
@@ -128,7 +128,7 @@ class Genesis_Simple_FAQ_CPT {
 	 * @return void
 	 */
 	function faq_shortcode_column_content( $column_name, $post_ID ) {
-		if ( 'genesis_simple_faq' === $column_name ) {
+		if ( 'gs_faq' === $column_name ) {
 			echo '[gs_faq id="' . $post_ID . '"]';
 		}
 	}

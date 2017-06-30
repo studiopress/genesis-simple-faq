@@ -45,12 +45,12 @@ final class Genesis_Simple_FAQ {
 	/**
 	 * Post type object.
 	 */
-	public $genesis_simple_faq_cpt;
+	public $gs_faq_cpt;
 
 	/**
 	 * Shortcode object.
 	 */
-	public $genesis_simple_faq_shortcode;
+	public $gs_faq_shortcode;
 
 	/**
 	 * Constructor.
@@ -115,14 +115,14 @@ final class Genesis_Simple_FAQ {
 		/**
 		 * Instance of the Genesis Simple FAQ custom post type.
 		 */
-		require_once( $this->plugin_dir_path . 'includes/class-genesis-simple-faq-cpt.php' );
-		$this->genesis_simple_faq_cpt = new Genesis_Simple_FAQ_CPT;
+		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-cpt.php' );
+		$this->gs_faq_cpt = new Genesis_Simple_FAQ_CPT;
 
 		/**
 		 * Instance of the Genesis Simple FAQ shortcode.
 		 */
-		require_once( $this->plugin_dir_path . 'includes/class-genesis-simple-faq-shortcode.php' );
-		$this->genesis_simple_faq_shortcode = new Genesis_Simple_FAQ_Shortcode;
+		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-shortcode.php' );
+		$this->gs_faq_shortcode = new Genesis_Simple_FAQ_Shortcode;
 
 	}
 

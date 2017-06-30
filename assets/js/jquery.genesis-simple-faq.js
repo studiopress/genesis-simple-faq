@@ -1,7 +1,7 @@
 ( function( $, animation ) {
 
 	// Gather all the FAQ components on the page.
-	var $faqs = $( '.genesis-simple-faq' );
+	var $faqs = $( '.gs-faq' );
 
 	/**
 	 * Method to add event handlers and actions to each FAQ component.
@@ -29,8 +29,8 @@
 	 */
 	function setupFaq( $faq ) {
 
-		var $question = $faq.children( '.genesis-simple-faq__question' ),
-			$answer   = $faq.children( '.genesis-simple-faq__answer'   );
+		var $question = $faq.children( '.gs-faq__question' ),
+			$answer   = $faq.children( '.gs-faq__answer'   );
 
 		$question.click( function() {
 			handleClickEvent( $faq );
@@ -48,46 +48,46 @@
 	 */
 	function handleClickEvent( $faq ) {
 
-		if ( $faq.hasClass( 'genesis-simple-faq--expanded' ) ) {
+		if ( $faq.hasClass( 'gs-faq--expanded' ) ) {
 
 			// Parent state class.
-			$faq.removeClass( 'genesis-simple-faq--expanded' );
+			$faq.removeClass( 'gs-faq--expanded' );
 
 			// Question class and attributes.
-			$faq.children( '.genesis-simple-faq__question' )
+			$faq.children( '.gs-faq__question' )
 				.attr( 'aria-expanded', false )
-				.removeClass( 'genesis-simple-faq__question--expanded' );
+				.removeClass( 'gs-faq__question--expanded' );
 
 			// Answer class and attributes.
-			$faq.children( '.genesis-simple-faq__answer' )
+			$faq.children( '.gs-faq__answer' )
 				.attr( 'aria-expanded', false )
-				.removeClass( 'genesis-simple-faq__answer--expanded' )
+				.removeClass( 'gs-faq__answer--expanded' )
 
 			if ( animation ) {
-				$faq.children( '.genesis-simple-faq__answer' ).slideToggle( 'fast' );
+				$faq.children( '.gs-faq__answer' ).slideToggle( 'fast' );
 			}
 
 		} else {
 
 			// Parent state class.
-			$faq.addClass( 'genesis-simple-faq--expanded' );
+			$faq.addClass( 'gs-faq--expanded' );
 
 			// Question class and attributes.
-			$faq.children( '.genesis-simple-faq__question' )
+			$faq.children( '.gs-faq__question' )
 				.attr( 'aria-expanded', true )
-				.addClass( 'genesis-simple-faq__question--expanded' );
+				.addClass( 'gs-faq__question--expanded' );
 
 			// Answer class and attributes.
-			$faq.children( '.genesis-simple-faq__answer' )
+			$faq.children( '.gs-faq__answer' )
 				.attr( 'aria-expanded', true )
-				.addClass( 'genesis-simple-faq__answer--expanded' );
+				.addClass( 'gs-faq__answer--expanded' );
 
 			if ( animation ) {
-				$faq.children( '.genesis-simple-faq__answer' ).slideToggle( 'fast' );
+				$faq.children( '.gs-faq__answer' ).slideToggle( 'fast' );
 			}
 
 		}
 
 	}
 
-})( jQuery, genesis_simple_faq_animation.js_animation );
+})( jQuery, gs_faq_animation.js_animation );
