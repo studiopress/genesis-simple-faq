@@ -129,7 +129,7 @@ class Genesis_Simple_FAQ_CPT {
 	 */
 	function faq_shortcode_column_content( $column_name, $post_ID ) {
 		if ( 'genesis_simple_faq' === $column_name ) {
-			echo '[genesis_simple_faq id="' . $post_ID . '"]';
+			echo '[gs_faq id="' . $post_ID . '"]';
 		}
 	}
 

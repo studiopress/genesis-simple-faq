@@ -16,7 +16,7 @@ class Genesis_Simple_FAQ_Shortcode {
 	public function __construct() {
 
 		// Register shortcode.
-		add_shortcode( 'genesis_faq', array( $this, 'genesis_simple_faq_shortcode' ) );
+		add_shortcode( 'gs_faq', array( $this, 'genesis_simple_faq_shortcode' ) );
 
 		// Print critical styles to header.
 		add_action( 'wp_head', array( $this, 'genesis_simple_faq_print_styles' ) );
