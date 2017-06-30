@@ -1,9 +1,35 @@
+/**
+ * Plugin to control FAQ showing/hiding and accessibility attributes.
+ * Accessible markup initiated by 10up Components - thanks!
+ *
+ * @author Calvin Koepke
+ *
+ * @since 0.9.0
+ */
 (function() {
+	'use strict';
+
+	var index = 0;
 
 	document.addEventListener( 'DOMContentLoaded', function() {
 
 		// Gather all the FAQ components on the page.
-		var faqs = document.querySelectorAll( '.gs-faq' );
+		var faqs  = document.querySelectorAll( '.gs-faq__question' );
+
+		var groups = document.querySelectorAll('.gs-faq');
+
+		groups.forEach(function( faq ) {
+
+			faq.addEventListener(
+				'click',
+				function(e) {
+					if ( e.target.classList.contains( 'gs-faq__question' ) ) {
+						handleClickEvent( e.target );
+					}
+				}
+			);
+
+		});
 
 		/**
 		 * Method to add event handlers and actions to each FAQ component.
@@ -14,7 +40,7 @@
 		 *
 		 * @since 0.9.0
 		 */
-		faqs.forEach( function( item, index ) {
+		faqs.forEach( function( item ) {
 			setupFaq( item );
 		});
 
@@ -30,16 +56,19 @@
 	 */
 	function setupFaq( faq ) {
 
-		var question = faq.querySelector( '.gs-faq__question' ),
-			answer   = faq.querySelector( '.gs-faq__answer'   );
+		var id    = index++;
+		var panel = faq.nextElementSibling;
 
-		question.addEventListener( 'mousedown', function() {
-			handleClickEvent( faq );
-		});
+		faq.setAttribute( 'id', 'tab' + index + '-' + id );
+		faq.setAttribute( 'aria-selected', 'false' );
+		faq.setAttribute( 'aria-expanded', 'false' );
+		faq.setAttribute( 'aria-controls', 'panel' + index + '-' + id );
+		faq.setAttribute( 'role', 'tab' );
 
-		question.addEventListener( 'keydown', function( event ) {
-			handleKeydownEvent( event, faq );
-		});
+		panel.setAttribute( 'id', 'panel' + index + '-' + id );
+		panel.setAttribute( 'aria-hidden', 'true' );
+		panel.setAttribute( 'aria-labelledby', 'tab' + index + '-' + id );
+		panel.setAttribute( 'role', 'tabpanel' );
 
 	}
 
@@ -53,67 +82,30 @@
 	 */
 	function handleClickEvent( faq ) {
 
-		if ( faq.classList.contains( 'gs-faq--expanded' ) ) {
+		var nextPanel = faq.nextElementSibling;
+		var nextPanelLabel = nextPanel.getElementsByClassName( 'gs-faq__answer__heading' )[0];
 
-			// Parent state class.
-			faq.classList.remove( 'gs-faq--expanded' );
+		faq.classList.toggle( 'gs-faq--expanded' );
 
-			// Accessible attributes.
-			faq.querySelector( '.gs-faq__question' )
-				.setAttribute( 'aria-expanded', "false" );
-			faq.querySelector( '.gs-faq__answer' )
-				.setAttribute( 'aria-expanded', "false" );
+		nextPanel.classList.toggle( 'gs-faq--expanded' );
+		nextPanelLabel.setAttribute( 'tabindex', '-1' );
+		nextPanelLabel.focus();
 
-			// Remove expanded classes.
-			faq.querySelector( '.gs-faq__question' )
-				.classList.remove( 'gs-faq__question--expanded' );
-			faq.querySelector( '.gs-faq__answer' )
-				.classList.remove( 'gs-faq__answer--expanded' );
+		if ( nextPanel.classList.contains( 'gs-faq--expanded' ) ) {
 
-			// Hide answer.
-			faq.querySelector( '.gs-faq__answer' ).style.display = 'none';
+			faq.setAttribute( 'aria-selected', 'true' )
+			faq.setAttribute( 'aria-expanded', 'true' );
+
+			nextPanel.setAttribute( 'aria-hidden', 'false' );
 
 		} else {
 
-			// Parent state class.
-			faq.classList.add( 'gs-faq--expanded' );
+			faq.setAttribute( 'aria-selected', 'false' )
+			faq.setAttribute( 'aria-expanded', 'false' );
 
-			// Accessible attributes.
-			faq.querySelector( '.gs-faq__question' )
-				.setAttribute( 'aria-expanded', "true" );
-			faq.querySelector( '.gs-faq__answer' )
-				.setAttribute( 'aria-expanded', "true" );
-
-			// Add expanded classes.
-			faq.querySelector( '.gs-faq__question' )
-				.classList.add( 'gs-faq__question--expanded' );
-			faq.querySelector( '.gs-faq__answer' )
-				.classList.add( 'gs-faq__answer--expanded' );
-
-			// Show answer.
-			faq.querySelector( '.gs-faq__answer' ).style.display = 'block';
+			nextPanel.setAttribute( 'aria-hidden', 'true' );
 
 		}
-
-	}
-
-	/**
-	 * Function to handle a keydown event on FAQ buttons.
-	 *
-	 * @param  {object}    event Event details object.
-	 * @param  {node}      faq   The target FAQ component.
-	 * @return {undefined}
-	 *
-	 * @since 0.9.0
-	 */
-	function handleKeydownEvent( event, faq ) {
-
-		// If not Enter or Spacebar, do nothing.
-		if ( event.keyCode !== 13 && event.keyCode !== 32 ) {
-			return;
-		}
-
-		handleClickEvent( faq );
 
 	}
 

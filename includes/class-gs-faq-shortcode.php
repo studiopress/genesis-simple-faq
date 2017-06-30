@@ -65,7 +65,7 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		if ( $faqs->have_posts() ) {
 
-			$output = '<div class="gs-faq-wrapper">';
+			$output = '<div class="gs-faq">';
 
 			while ( $faqs->have_posts() ) {
 				$faqs->the_post();
@@ -73,14 +73,15 @@ class Genesis_Simple_FAQ_Shortcode {
 				$question = get_the_title();
 				$answer   = get_the_content();
 				$template = sprintf(
-					'<div class="gs-faq">
-						<button class="gs-faq__question" aria-expanded="false">%s</button>
-						<div class="gs-faq__answer" aria-expanded="false">%s</div>
+					'<button class="gs-faq__question" type="button">%1$s</button>
+					<div class="gs-faq__answer no-animation">
+						<h2 class="gs-faq__answer__heading">%1$s</h2>
+						%2$s
 					</div>',
 					esc_html( $question ),
 					$answer
 				);
-				
+
 				// Allow filtering of the template markup.
 				$output .= apply_filters( 'gs_faq_template', $template, $question, $answer );
 			}
@@ -92,9 +93,6 @@ class Genesis_Simple_FAQ_Shortcode {
 		wp_reset_query();
 
 		return $output;
-
-		// Restore this after architecting the markup so users can modify it.
-		// apply_filters( 'genesis_simple_faq_output', $faq, $a, $content );
 
 	}
 
@@ -136,13 +134,22 @@ class Genesis_Simple_FAQ_Shortcode {
 
 			.gs-faq__question {
 				display: block;
+				margin-top: 20px;
 				text-align: left;
 				width: 100%%;
+			}
+
+			.gs-faq__question:first-of-type {
+				margin-top: 0;
 			}
 
 			.gs-faq__answer {
 				display: none;
 				padding: 5px;
+			}
+
+			.gs-faq__answer.no-animation.gs-faq--expanded {
+				display: block;
 			}'
 		);
 
