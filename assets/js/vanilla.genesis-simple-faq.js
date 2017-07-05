@@ -65,11 +65,6 @@
 		faq.setAttribute( 'aria-controls', 'panel' + index + '-' + id );
 		faq.setAttribute( 'role', 'tab' );
 
-		panel.setAttribute( 'id', 'panel' + index + '-' + id );
-		panel.setAttribute( 'aria-hidden', 'true' );
-		panel.setAttribute( 'aria-labelledby', 'tab' + index + '-' + id );
-		panel.setAttribute( 'role', 'tabpanel' );
-
 	}
 
 	/**
