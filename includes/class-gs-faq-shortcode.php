@@ -25,10 +25,6 @@ class Genesis_Simple_FAQ_Shortcode {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts'     ) );
 		add_action( 'genesis_before',     array( $this, 'load_content_scripts' ) );
 
-		// Include widget support for shortcode and asset loading.
-		add_filter( 'widget_text',        array( $this, 'load_widget_scripts'  ) );
-		add_filter( 'widget_text',        'do_shortcode'                         );
-
 	}
 
 	/**
@@ -171,25 +167,6 @@ class Genesis_Simple_FAQ_Shortcode {
 		if ( has_shortcode( $content, 'gs_faq' ) ) {
 			$this->enqueue_scripts();
 		}
-
-	}
-
-	/**
-	 * Function to load the FAQ assets if a widget text contains it.
-	 *
-	 * @param  string  $widget_text The widget text string.
-	 * @return void
-	 *
-	 * @since 0.9.0
-	 */
-	function load_widget_scripts( $widget_text ) {
-
-		// Load assets if in widget text content.
-		if ( has_shortcode( $widget_text, 'gs_faq' ) ) {
-			$this->enqueue_scripts();
-		}
-
-		return $widget_text;
 
 	}
 
