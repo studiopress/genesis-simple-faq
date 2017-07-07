@@ -35,7 +35,8 @@ class Genesis_Simple_FAQ_CPT {
 		$args = array(
 			'labels' => array(
 				'name' => __( 'Genesis Simple FAQs', 'genesis-simple-faq' ),
-				'singular_name' => __( 'Genesis Simple FAQs', 'genesis-simple-faq' ),
+				'singular_name' => __( 'Genesis Simple FAQ', 'genesis-simple-faq' ),
+				'menu_name'     => __( 'Simple FAQs', 'genesis-simple-faq' ),
 				'add_new'       => _x( 'Add New', 'genesis-simple-faq' ),
 				'add_new_item'  => __( 'Add New FAQ', 'genesis-simple-faq' ),
 				'edit_item'     => __( 'Edit FAQ', 'genesis-simple-faq' ),
