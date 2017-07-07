@@ -1,7 +1,22 @@
+/**
+ * Plugin to control FAQ showing/hiding and accessibility attributes.
+ * Accessible markup initiated by 10up Components - thanks!
+ *
+ * @author Calvin Koepke
+ *
+ * @since 0.9.0
+ */
 ( function( $, animation ) {
+	'use strict';
 
 	// Gather all the FAQ components on the page.
-	var $faqs = $( '.gs-faq' );
+	var $faqs = $( '.gs-faq__question' );
+	var index = 0;
+
+	// Event handler for toggling.
+	$('.gs-faq').on( 'click', '.gs-faq__question', function() {
+		handleClickEvent( $(this) );
+	});
 
 	/**
 	 * Method to add event handlers and actions to each FAQ component.
@@ -22,69 +37,75 @@
 	/**
 	 * Function to initialize each FAQ component.
 	 *
-	 * @param object $faq Object of the FAQ component to setup.
-	 * @return undefined
+	 * @param {Object} $faq Object of the FAQ component to setup.
 	 *
 	 * @since 0.9.0
 	 */
 	function setupFaq( $faq ) {
 
-		var $question = $faq.children( '.gs-faq__question' ),
-			$answer   = $faq.children( '.gs-faq__answer'   );
+		var id     = index++,
+			$panel = $faq.next();
 
-		$question.click( function() {
-			handleClickEvent( $faq );
-		});
+		// Add animation class.
+		if ( animation ) {
+			$panel.removeClass( 'no-animation' );
+		}
+
+		$faq
+			.attr( 'id', 'tab' + index + '-' + id )
+			.attr( 'aria-selected', 'false' )
+			.attr( 'aria-expanded', 'false' )
+			.attr( 'aria-controls', 'panel' + index + '-' + id )
+			.attr( 'role', 'tab' );
+
+		$panel
+			.attr( 'id', 'panel' + index + '-' + id )
+			.attr( 'aria-hidden', 'true' )
+			.attr( 'aria-labelledby', 'tab' + index + '-' + id )
+			.attr( 'role', 'tabpanel' );
 
 	}
 
 	/**
 	 * Handle a click event on the FAQ question element.
 	 *
-	 * @param  object    $target Object the click was initiated on.
-	 * @return undefined
+	 * @param {Object} $faq Object the click was initiated on.
 	 *
 	 * @since 0.9.0
 	 */
 	function handleClickEvent( $faq ) {
 
-		if ( $faq.hasClass( 'gs-faq--expanded' ) ) {
+		var $nextPanel      = $faq.next();
+		var $nextPanelLabel = $nextPanel.find( '.gs-faq__answer__heading' );
 
-			// Parent state class.
-			$faq.removeClass( 'gs-faq--expanded' );
+		$faq.toggleClass( 'gs-faq--expanded' );
 
-			// Question class and attributes.
-			$faq.children( '.gs-faq__question' )
-				.attr( 'aria-expanded', false )
-				.removeClass( 'gs-faq__question--expanded' );
+		$nextPanel.toggleClass( 'gs-faq--expanded' );
+		$nextPanelLabel
+			.attr( 'tabindex', '-1' )
+			.focus();
 
-			// Answer class and attributes.
-			$faq.children( '.gs-faq__answer' )
-				.attr( 'aria-expanded', false )
-				.removeClass( 'gs-faq__answer--expanded' )
+		if ( animation ) {
+			$nextPanel.slideToggle( 200, function() {
+				$nextPanelLabel.focus();
+			});
+		}
 
-			if ( animation ) {
-				$faq.children( '.gs-faq__answer' ).slideToggle( 'fast' );
-			}
+		if ( $nextPanel.hasClass( 'gs-faq--expanded' ) ) {
+
+			$faq
+				.attr( 'aria-selected', 'true' )
+				.attr( 'aria-expanded', 'true' );
+			$nextPanel
+				.attr( 'aria-hidden', 'false' );
 
 		} else {
 
-			// Parent state class.
-			$faq.addClass( 'gs-faq--expanded' );
-
-			// Question class and attributes.
-			$faq.children( '.gs-faq__question' )
-				.attr( 'aria-expanded', true )
-				.addClass( 'gs-faq__question--expanded' );
-
-			// Answer class and attributes.
-			$faq.children( '.gs-faq__answer' )
-				.attr( 'aria-expanded', true )
-				.addClass( 'gs-faq__answer--expanded' );
-
-			if ( animation ) {
-				$faq.children( '.gs-faq__answer' ).slideToggle( 'fast' );
-			}
+			$faq
+				.attr( 'aria-selected', 'false' )
+				.attr( 'aria-expanded', 'false' );
+			$nextPanel
+				.attr( 'aria-hidden', 'true' );
 
 		}
 

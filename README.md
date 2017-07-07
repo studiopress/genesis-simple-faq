@@ -28,7 +28,7 @@ Currently, there are three filters: one to toggle JS animation on or off, one to
 ### JS Animation (jQuery Only)
 By default, animation is set to true. This will add a slide animation to showing/hiding the FAQ. To remove JS animation and rely on classes to do your state-changing, add the following to your `functions.php` file:
 
-`add_filter( 'gs_faq_animation', false );`
+`add_filter( 'gs_faq_animation', '__return_false' );`
 
 ### Critical CSS
 You can modify the CSS output using the following filter (styles are minified on the front-end):

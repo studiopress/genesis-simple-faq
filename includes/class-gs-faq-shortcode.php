@@ -25,10 +25,6 @@ class Genesis_Simple_FAQ_Shortcode {
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts'     ) );
 		add_action( 'genesis_before',     array( $this, 'load_content_scripts' ) );
 
-		// Include widget support for shortcode and asset loading.
-		add_filter( 'widget_text',        array( $this, 'load_widget_scripts'  ) );
-		add_filter( 'widget_text',        'do_shortcode'                         );
-
 	}
 
 	/**
@@ -43,16 +39,21 @@ class Genesis_Simple_FAQ_Shortcode {
 	function shortcode( $atts ) {
 
 		$a = shortcode_atts( array(
-			'id' => '',
+			'id'  => '',
+			'cat' => '',
 		), $atts );
 
 		// If IDs are set, use them. Otherwise retrieve all.
 		$ids = '' !== $a['id'] ? explode( ',', $a['id'] ) : array();
 
+		// If category IDs are set, use them. Otherwise retrieve all.
+		$cats = '' !== $a['cat'] ? explode( ',', $a['cat'] ) : array();
+
 		// Query arguments.
 		$args = array(
 			'post_type'  => 'gs_faq',
-			'post__in'   => $ids
+			'post__in'   => $ids,
+			'cat'        => $cats,
 		);
 
 		// The loop.
@@ -60,25 +61,30 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		if ( $faqs->have_posts() ) {
 
-			$output = '';
+			$output = '<div class="gs-faq">';
 
 			while ( $faqs->have_posts() ) {
 				$faqs->the_post();
-				$output .= sprintf(
-					'<div class="gs-faq">
-						<button class="gs-faq__question" aria-expanded="false">%s</button>
-						<div class="gs-faq__answer" aria-expanded="false">%s</div>
-					</div>', esc_html( get_the_title() ), get_the_content()
+
+				$question = get_the_title();
+				$answer   = get_the_content();
+				$template = sprintf(
+					'<button class="gs-faq__question" type="button">%1$s</button><div class="gs-faq__answer no-animation"><h2 class="gs-faq__answer__heading">%1$s</h2>%2$s</div>',
+					esc_html( $question ),
+					$answer
 				);
+
+				// Allow filtering of the template markup.
+				$output .= apply_filters( 'gs_faq_template', $template, $question, $answer );
 			}
+
+			$output .= '</div>';
+
 		}
 
 		wp_reset_query();
 
 		return $output;
-
-		// Restore this after architecting the markup so users can modify it.
-		// apply_filters( 'genesis_simple_faq_output', $faq, $a, $content );
 
 	}
 
@@ -120,13 +126,22 @@ class Genesis_Simple_FAQ_Shortcode {
 
 			.gs-faq__question {
 				display: block;
+				margin-top: 20px;
 				text-align: left;
 				width: 100%%;
+			}
+
+			.gs-faq__question:first-of-type {
+				margin-top: 0;
 			}
 
 			.gs-faq__answer {
 				display: none;
 				padding: 5px;
+			}
+
+			.gs-faq__answer.no-animation.gs-faq--expanded {
+				display: block;
 			}'
 		);
 
@@ -152,25 +167,6 @@ class Genesis_Simple_FAQ_Shortcode {
 		if ( has_shortcode( $content, 'gs_faq' ) ) {
 			$this->enqueue_scripts();
 		}
-
-	}
-
-	/**
-	 * Function to load the FAQ assets if a widget text contains it.
-	 *
-	 * @param  string  $widget_text The widget text string.
-	 * @return void
-	 *
-	 * @since 0.9.0
-	 */
-	function load_widget_scripts( $widget_text ) {
-
-		// Load assets if in widget text content.
-		if ( has_shortcode( $widget_text, 'gs_faq' ) ) {
-			$this->enqueue_scripts();
-		}
-
-		return $widget_text;
 
 	}
 
