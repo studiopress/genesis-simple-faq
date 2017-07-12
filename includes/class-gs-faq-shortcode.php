@@ -140,6 +140,10 @@ class Genesis_Simple_FAQ_Shortcode {
 				padding: 5px;
 			}
 
+			.gs-faq__answer__heading {
+				display: none;
+			}
+
 			.gs-faq__answer.no-animation.gs-faq--expanded {
 				display: block;
 			}'
