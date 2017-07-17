@@ -48,9 +48,19 @@ final class Genesis_Simple_FAQ {
 	public $post_type;
 
 	/**
+	 * Post type taxonomy.
+	 */
+	public $post_type_tax;
+
+	/**
 	 * Shortcode object.
 	 */
 	public $shortcode;
+
+	/**
+	 * Widget object.
+	 */
+	public $widget;
 
 	/**
 	 * Constructor.
@@ -119,10 +129,22 @@ final class Genesis_Simple_FAQ {
 		$this->post_type = new Genesis_Simple_FAQ_CPT;
 
 		/**
+		 * Instance of the Genesis Simple FAQ taxonomy.
+		 */
+		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-taxonomy.php' );
+		$this->post_type_tax = new Genesis_Simple_FAQ_Tax;
+
+		/**
 		 * Instance of the Genesis Simple FAQ shortcode.
 		 */
 		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-shortcode.php' );
 		$this->shortcode = new Genesis_Simple_FAQ_Shortcode;
+
+		/**
+		 * Instance of the Genesis Simple FAQ Widget.
+		 */
+		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-widget.php' );
+		$this->widget = new Genesis_Simple_FAQ_Widget;
 
 	}
 

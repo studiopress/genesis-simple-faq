@@ -59,7 +59,7 @@ class Genesis_Simple_FAQ_CPT {
 				'editor',
 				'revisions',
 			),
-			'taxonomies'    => array( 'category' ),
+			'taxonomies'    => array( 'gs_faq_categories' ),
 			'show_in_rest'  => true,
 		);
 
