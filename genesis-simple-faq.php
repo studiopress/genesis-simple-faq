@@ -63,6 +63,11 @@ final class Genesis_Simple_FAQ {
 	public $widget;
 
 	/**
+	 * Assets object.
+	 */
+	public $assets;
+
+	/**
 	 * Constructor.
 	 *
 	 * @since 0.9.0
@@ -145,6 +150,12 @@ final class Genesis_Simple_FAQ {
 		 */
 		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-widget.php' );
 		$this->widget = new Genesis_Simple_FAQ_Widget;
+
+		/**
+		 * Instance of the plugin assets (loaded in the class).
+		 */
+		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-assets.php' );
+		$this->assets = new Genesis_Simple_FAQ_Assets;
 
 	}
 
