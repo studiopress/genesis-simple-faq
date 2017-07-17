@@ -123,16 +123,16 @@ final class Genesis_Simple_FAQ {
 	public function instantiate() {
 
 		/**
-		 * Instance of the Genesis Simple FAQ custom post type.
-		 */
-		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-cpt.php' );
-		$this->post_type = new Genesis_Simple_FAQ_CPT;
-
-		/**
 		 * Instance of the Genesis Simple FAQ taxonomy.
 		 */
 		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-taxonomy.php' );
 		$this->post_type_tax = new Genesis_Simple_FAQ_Tax;
+
+		/**
+		 * Instance of the Genesis Simple FAQ custom post type.
+		 */
+		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-cpt.php' );
+		$this->post_type = new Genesis_Simple_FAQ_CPT;
 
 		/**
 		 * Instance of the Genesis Simple FAQ shortcode.

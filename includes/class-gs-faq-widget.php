@@ -20,8 +20,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		$this->defaults = array(
 			'title'          => '',
-			'faqs'	         => '',
-			'cat'            => '',
+			'taxonomy'       => '',
 		);
 
 		$widget_ops = array(
@@ -53,39 +52,42 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		echo $args['before_widget'];
 
-			if ( ! empty( $instance['title'] ) ) {
-				echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title']; // WPCS: prefix ok.
+		if ( ! empty( $instance['title'] ) ) {
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title']; // WPCS: prefix ok.
+		}
+
+		// The FAQ loop.
+		$faqs = new WP_Query( array(
+			'post_type' => 'gs_faq',
+			'cat'       => $instance['taxonomy'],
+		));
+
+		if ( $faqs->have_posts() ) {
+
+			echo '<div class="gs-faq">';
+
+			while ( $faqs->have_posts() ) {
+				$faqs->the_post();
+
+				$question = get_the_title();
+				$answer   = wpautop( get_the_content() );
+				$template = sprintf(
+					'<button class="gs-faq__question" type="button">%1$s</button><div class="gs-faq__answer no-animation"><h2 class="gs-faq__answer__heading">%1$s</h2>%2$s</div>',
+					esc_html( $question ),
+					$answer
+				);
+
+				// Allow filtering of the template markup.
+				echo apply_filters( 'gs_faq_template', $template, $question, $answer );
 			}
 
-			$text = '';
+			echo '</div>';
 
-			if ( ! empty( $instance['alignment'] ) ) {
-				$text .= '<span class="align' . esc_attr( $instance['alignment'] ) . '">';
-			}
+		} else {
+			echo '<p>No FAQs were found.</p>';
+		}
 
-			$text .= get_avatar( $instance['user'], $instance['size'] );
-
-			if( ! empty( $instance['alignment'] ) ) {
-				$text .= '</span>';
-			}
-
-			if ( 'text' === $instance['author_info'] ) {
-				$text .= $instance['bio_text']; // We run KSES on update.
-			} else {
-				$text .= get_the_author_meta( 'description', $instance['user'] );
-			}
-
-			$text .= $instance['page'] ? sprintf( ' <a class="pagelink" href="%s">%s</a>', get_page_link( $instance['page'] ), $instance['page_link_text'] ) : '';
-
-			echo wpautop( $text );
-
-			// If posts link option checked, add posts link to output.
-			$display_name = get_the_author_meta( 'display_name', $instance['user'] );
-			$user_name = ( ! empty ( $display_name ) && genesis_a11y( 'screen-reader-text' ) ) ? '<span class="screen-reader-text">' . $display_name. ': </span>' : '';
-
-			if ( $instance['posts_link'] ) {
-				printf( '<div class="posts_link posts-link"><a href="%s">%s%s</a></div>', get_author_posts_url( $instance['user'] ), $user_name, __( 'View My Blog Posts', 'genesis' ) );
-			}
+		wp_reset_query();
 
 		echo $args['after_widget'];
 
@@ -104,9 +106,8 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
-		$new_instance['title']          = strip_tags( $new_instance['title'] );
-		$new_instance['bio_text']       = current_user_can( 'unfiltered_html' ) ? $new_instance['bio_text'] : genesis_formatting_kses( $new_instance['bio_text'] );
-		$new_instance['page_link_text'] = strip_tags( $new_instance['page_link_text'] );
+		$new_instance['title']    = strip_tags( $new_instance['title'] );
+		$new_instance['taxonomy'] = intval( $new_instance['taxonomy'] );
 
 		return $new_instance;
 
@@ -125,33 +126,23 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title', 'genesis' ); ?>:</label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title', 'genesis-simple-faq' ); ?>:</label>
 			<input type="text" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat" />
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_name( 'cat' ) ); ?>"><?php _e( 'Choose a category.', 'genesis' ); ?></label><br />
+			<label for="<?php echo esc_attr( $this->get_field_name( 'taxonomy' ) ); ?>"><?php _e( 'Choose a category.', 'genesis-simple-faq' ); ?></label><br />
 			<?php
 			wp_dropdown_categories(
 				array(
-					'taxonomy'       => 'genesis_faq_categories',
-					'selected'       => $instance['cat'],
+					'taxonomy'        => 'gs_faq_categories',
+					'selected'        => $instance['cat'],
+					'show_option_all' => 'All Categories',
 				)
 			);
 			?>
 		</p>
-
-		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'page_link_text' ) ); ?>"><?php _e( 'Extended page link text', 'genesis' ); ?>:</label>
-			<input type="text" id="<?php echo esc_attr( $this->get_field_id( 'page_link_text' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'page_link_text' ) ); ?>" value="<?php echo esc_attr( $instance['page_link_text'] ); ?>" class="widefat" />
-		</p>
-
-		<p>
-			<input id="<?php echo esc_attr( $this->get_field_id( 'posts_link' ) ); ?>" type="checkbox" name="<?php echo esc_attr( $this->get_field_name( 'posts_link' ) ); ?>" value="1" <?php checked( $instance['posts_link'] ); ?>/>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'posts_link' ) ); ?>"><?php _e( 'Show Author Archive Link?', 'genesis' ); ?></label>
-		</p>
 		<?php
-
 	}
 }
 

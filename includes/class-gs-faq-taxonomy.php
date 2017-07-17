@@ -10,14 +10,15 @@ class Genesis_Simple_FAQ_Tax {
         add_action( 'init', array( $this, 'register_taxonomy' ) );
     }
 
-    public function register_taxonomy() {
+    function register_taxonomy() {
         register_taxonomy(
             'gs_faq_categories',
             'gs_faq',
             array(
-                'label'        => __( 'Category', 'genesis-simple-faq' ),
+                'label'        => __( 'Categories', 'genesis-simple-faq' ),
                 'public'       => false,
                 'rewrite'      => false,
+                'show_ui'      => true,
                 'hierarchical' => true,
             )
         );
