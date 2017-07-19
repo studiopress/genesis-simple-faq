@@ -25,11 +25,6 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 	 */
 	public function __construct() {
 
-		// Conditionally load dependencies.
-		if ( is_active_widget( '', '', $this->id_base ) ) {
-			add_action( 'wp_enqueue_scripts', array( Genesis_Simple_FAQ()->assets, 'enqueue_scripts' ), 11 );
-		}
-
 		$this->defaults = array(
 			'title'    => '',
 			'taxonomy' => '',
@@ -61,6 +56,11 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		// Merge with defaults.
 		$instance = wp_parse_args( (array) $instance, $this->defaults );
+
+		// Conditionally load dependencies.
+		if ( ! wp_script_is( 'gs-faq-jquery-js' ) && ! wp_script_is( 'gs-faq-vanilla-js' ) ) {
+			Genesis_Simple_FAQ()->assets->enqueue_scripts();
+		}
 
 		echo $args['before_widget'];
 
