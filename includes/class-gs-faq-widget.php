@@ -15,22 +15,24 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 	/**
 	 * Holds widget id.
-	 * 
+	 *
 	 * @var string
 	 */
-	protected $widget_id = 'gs-faq-widget';
+	protected $id_base = 'gs-faq-widget';
 
-    	/**
+    /**
 	 * Constructor. Set the default widget options and create widget.
 	 */
 	public function __construct() {
 
 		// Conditionally load dependencies.
-		add_action( 'genesis_before', array( $this, 'load_dependencies' ) );
+		if ( is_active_widget( '', '', $this->widget_id ) ) {
+			add_action( 'wp_enqueue_scripts', array( Genesis_Simple_FAQ()->assets, 'enqueue_scripts' ), 11 );
+		}
 
 		$this->defaults = array(
-			'title'          => '',
-			'taxonomy'       => '',
+			'title'    => '',
+			'taxonomy' => '',
 		);
 
 		$widget_ops = array(
@@ -39,7 +41,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 		);
 
 		$control_ops = array(
-			'id_base' => $this->widget_id,
+			'id_base' => $this->id_base,
 			'width'   => 200,
 			'height'  => 250,
 		);
@@ -156,8 +158,8 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 	}
 
 	function load_dependencies() {
-		if ( is_active_widget( $this->widget_id ) ) {
-			Genesis_Simple_FAQ()->assets->load_dependecies();
+		if ( ! is_admin() && is_active_widget( '', '', $this->id_base ) ) {
+			Genesis_Simple_FAQ()->assets->enqueue_scripts();
 		}
 	}
 }

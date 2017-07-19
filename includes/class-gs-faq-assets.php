@@ -12,7 +12,7 @@ class Genesis_Simple_FAQ_Assets {
 		add_action( 'wp_head', array( $this, 'print_critical_styles' ) );
 
 		// Register and maybe load scripts.
-		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts'     ) );
+		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
 
     }
 
@@ -33,8 +33,8 @@ class Genesis_Simple_FAQ_Assets {
 			? 'jquery.genesis-simple-faq.js'
 			: 'min/jquery.genesis-simple-faq.min.js';
 
-		wp_register_script( 'gs-faq-jquery-js',  plugin_dir_url( __FILE__ ) . '../assets/js/' . $jquery_path,   array( 'jquery' ), '0.9.0', true );
-		wp_register_script( 'gs-faq-vanilla-js', plugin_dir_url( __FILE__ ) . '../assets/js/' . $vanilla_path, array(),           '0.9.0', true );
+		wp_register_script( 'gs-faq-jquery-js',  plugin_dir_url( __FILE__ ) . '../assets/js/' . $jquery_path,  array( 'jquery' ), Genesis_Simple_FAQ()->plugin_version, true );
+		wp_register_script( 'gs-faq-vanilla-js', plugin_dir_url( __FILE__ ) . '../assets/js/' . $vanilla_path, array(),           Genesis_Simple_FAQ()->plugin_version, true );
 
 	}
 
