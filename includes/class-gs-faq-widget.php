@@ -18,7 +18,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 	 *
 	 * @var string
 	 */
-	protected $id_base = 'gs-faq-widget';
+	public $id_base = 'gs-faq-widget';
 
     /**
 	 * Constructor. Set the default widget options and create widget.
