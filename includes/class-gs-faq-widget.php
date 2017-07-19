@@ -26,7 +26,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 	public function __construct() {
 
 		// Conditionally load dependencies.
-		if ( is_active_widget( '', '', $this->widget_id ) ) {
+		if ( is_active_widget( '', '', $this->id_base ) ) {
 			add_action( 'wp_enqueue_scripts', array( Genesis_Simple_FAQ()->assets, 'enqueue_scripts' ), 11 );
 		}
 
