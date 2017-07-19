@@ -157,11 +157,6 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 		<?php
 	}
 
-	function load_dependencies() {
-		if ( ! is_admin() && is_active_widget( '', '', $this->id_base ) ) {
-			Genesis_Simple_FAQ()->assets->enqueue_scripts();
-		}
-	}
 }
 
 add_action( 'widgets_init', function() {
