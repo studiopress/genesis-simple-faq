@@ -13,7 +13,6 @@ class Genesis_Simple_FAQ_Assets {
 
 		// Register and maybe load scripts.
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts'     ) );
-		add_action( 'genesis_before',     array( $this, 'load_content_scripts' ) );
 
     }
 
@@ -113,22 +112,14 @@ class Genesis_Simple_FAQ_Assets {
 	}
 
     /**
-	 * Load the scripts and styles on the front-end if required.
+	 * Public method to load the scripts and styles on the front-end.
 	 *
 	 * @return void
 	 *
 	 * @since 0.9.0
 	 */
-	public function load_content_scripts() {
-
-		global $post;
-		$content = $post->post_content;
-
-		// Load assets if in post content.
-		if ( has_shortcode( $content, 'gs_faq' ) ) {
-			$this->enqueue_scripts();
-		}
-
+	public function load_scripts() {
+		$this->enqueue_scripts();
 	}
 
     /**

@@ -13,10 +13,20 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 	 */
 	protected $defaults;
 
+	/**
+	 * Holds widget id.
+	 * 
+	 * @var string
+	 */
+	protected $widget_id = 'gs-faq-widget';
+
     	/**
 	 * Constructor. Set the default widget options and create widget.
 	 */
 	public function __construct() {
+
+		// Conditionally load dependencies.
+		add_action( 'genesis_before', array( $this, 'load_dependencies' ) );
 
 		$this->defaults = array(
 			'title'          => '',
@@ -29,7 +39,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 		);
 
 		$control_ops = array(
-			'id_base' => 'gs-faq-widget',
+			'id_base' => $this->widget_id,
 			'width'   => 200,
 			'height'  => 250,
 		);
@@ -143,6 +153,12 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 			?>
 		</p>
 		<?php
+	}
+
+	function load_dependencies() {
+		if ( is_active_widget( $this->widget_id ) ) {
+			Genesis_Simple_FAQ()->assets->load_dependecies();
+		}
 	}
 }
 

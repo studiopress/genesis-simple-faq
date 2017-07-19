@@ -18,6 +18,9 @@ class Genesis_Simple_FAQ_Shortcode {
 		// Register shortcode.
 		add_shortcode( 'gs_faq', array( $this, 'shortcode' ) );
 
+		// Conditionally load dependencies.
+		add_action( 'genesis_before', array( $this, 'load_dependencies' ) );
+
 	}
 
 	/**
@@ -80,6 +83,16 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		return $output;
 
+	}
+
+	function load_dependencies() {
+		global $post;
+		$content = $post->post_content;
+
+		// Load assets if in post content.
+		if ( has_shortcode( $content, 'gs_faq' ) ) {
+			Genesis_Simple_FAQ()->assets->load_scripts();
+		}
 	}
 
 }
