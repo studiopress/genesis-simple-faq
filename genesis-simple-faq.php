@@ -48,9 +48,24 @@ final class Genesis_Simple_FAQ {
 	public $post_type;
 
 	/**
+	 * Post type taxonomy.
+	 */
+	public $post_type_tax;
+
+	/**
 	 * Shortcode object.
 	 */
 	public $shortcode;
+
+	/**
+	 * Widget object.
+	 */
+	public $widget;
+
+	/**
+	 * Assets object.
+	 */
+	public $assets;
 
 	/**
 	 * Constructor.
@@ -75,6 +90,8 @@ final class Genesis_Simple_FAQ {
 
 		$this->load_plugin_textdomain();
 		$this->instantiate();
+
+		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 
 	}
 
@@ -113,16 +130,45 @@ final class Genesis_Simple_FAQ {
 	public function instantiate() {
 
 		/**
+		 * Instance of the plugin assets (loaded in the class).
+		 */
+		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-assets.php' );
+		$this->assets = new Genesis_Simple_FAQ_Assets;
+
+		/**
 		 * Instance of the Genesis Simple FAQ custom post type.
 		 */
 		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-cpt.php' );
 		$this->post_type = new Genesis_Simple_FAQ_CPT;
 
 		/**
+		 * Instance of the Genesis Simple FAQ taxonomy.
+		 */
+		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-taxonomy.php' );
+		$this->post_type_tax = new Genesis_Simple_FAQ_Tax;
+
+		/**
 		 * Instance of the Genesis Simple FAQ shortcode.
 		 */
 		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-shortcode.php' );
 		$this->shortcode = new Genesis_Simple_FAQ_Shortcode;
+
+		/**
+		 * Instance of the Genesis Simple FAQ Widget.
+		 */
+		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-widget.php' );
+		$this->widget = new Genesis_Simple_FAQ_Widget;
+
+	}
+
+	/**
+	 * Register Widget(s).
+	 *
+	 * @since 0.9.0
+	 */
+	public function register_widgets() {
+
+		register_widget( 'Genesis_Simple_FAQ_Widget' );
 
 	}
 
