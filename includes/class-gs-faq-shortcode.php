@@ -85,7 +85,13 @@ class Genesis_Simple_FAQ_Shortcode {
 
 	}
 
-	function load_dependencies() {
+	/**
+	 * Load asset dependencies if shortcode is used.
+	 *
+	 * @since 0.9.0
+	 */
+	public function load_dependencies() {
+
 		global $post;
 		$content = $post->post_content;
 
@@ -93,6 +99,7 @@ class Genesis_Simple_FAQ_Shortcode {
 		if ( has_shortcode( $content, 'gs_faq' ) ) {
 			Genesis_Simple_FAQ()->assets->load_scripts();
 		}
+
 	}
 
 }

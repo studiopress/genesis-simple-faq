@@ -91,6 +91,8 @@ final class Genesis_Simple_FAQ {
 		$this->load_plugin_textdomain();
 		$this->instantiate();
 
+		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+
 	}
 
 	/**
@@ -134,16 +136,16 @@ final class Genesis_Simple_FAQ {
 		$this->assets = new Genesis_Simple_FAQ_Assets;
 
 		/**
-		 * Instance of the Genesis Simple FAQ taxonomy.
-		 */
-		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-taxonomy.php' );
-		$this->post_type_tax = new Genesis_Simple_FAQ_Tax;
-
-		/**
 		 * Instance of the Genesis Simple FAQ custom post type.
 		 */
 		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-cpt.php' );
 		$this->post_type = new Genesis_Simple_FAQ_CPT;
+
+		/**
+		 * Instance of the Genesis Simple FAQ taxonomy.
+		 */
+		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-taxonomy.php' );
+		$this->post_type_tax = new Genesis_Simple_FAQ_Tax;
 
 		/**
 		 * Instance of the Genesis Simple FAQ shortcode.
@@ -156,6 +158,17 @@ final class Genesis_Simple_FAQ {
 		 */
 		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-widget.php' );
 		$this->widget = new Genesis_Simple_FAQ_Widget;
+
+	}
+
+	/**
+	 * Register Widget(s).
+	 *
+	 * @since 0.9.0
+	 */
+	public function register_widgets() {
+
+		register_widget( 'Genesis_Simple_FAQ_Widget' );
 
 	}
 

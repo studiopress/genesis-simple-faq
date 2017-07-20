@@ -7,9 +7,11 @@
 class Genesis_Simple_FAQ_CPT {
 
 	public function __construct() {
+
 		add_action( 'init',                  array( $this, 'register_cpt'             ) );
 		add_action( 'init',                  array( $this, 'add_faq_shortcode_column' ) );
 		add_filter( 'post_updated_messages', array( $this, 'cpt_updated_messages'     ) );
+
 	}
 
 	/**
@@ -20,7 +22,9 @@ class Genesis_Simple_FAQ_CPT {
 	 * @since 0.9.0
 	 */
 	function register_cpt() {
+
 		register_post_type( 'gs_faq', $this->cpt_args() );
+
 	}
 
 	/**
@@ -98,16 +102,19 @@ class Genesis_Simple_FAQ_CPT {
 		);
 
 		return $messages;
+
 	}
 
 	/**
 	 * Function to modify the FAQ's table columns and add a shortcode snippet.
 	 *
-	 *
+	 * @since 0.9.0
 	 */
 	function add_faq_shortcode_column() {
+
 		add_filter( 'manage_gs_faq_posts_columns',       array( $this, 'faq_shortcode_column_head' ) );
 		add_action( 'manage_gs_faq_posts_custom_column', array( $this, 'faq_shortcode_column_content' ), 10, 2 );
+
 	}
 
 	/**
@@ -115,10 +122,14 @@ class Genesis_Simple_FAQ_CPT {
 	 *
 	 * @param  array $columns  Default array of column headings.
 	 * @return array           Updated array of column headings.
+	 *
+	 * @since 0.9.0
 	 */
 	function faq_shortcode_column_head( $columns ) {
+
 		$columns['gs_faq'] = __( 'Shortcode', 'genesis-simple-faq' );
 		return $columns;
+
 	}
 
 	/**
@@ -127,11 +138,15 @@ class Genesis_Simple_FAQ_CPT {
 	 * @param  string $column_name Title of the column.
 	 * @param  int    $post_ID     ID of the current post.
 	 * @return void
+	 *
+	 * @since 0.9.0
 	 */
 	function faq_shortcode_column_content( $column_name, $post_ID ) {
+
 		if ( 'gs_faq' === $column_name ) {
 			echo '[gs_faq id="' . $post_ID . '"]';
 		}
+
 	}
 
 }

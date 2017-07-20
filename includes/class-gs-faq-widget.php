@@ -115,6 +115,8 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 	 * @param array $new_instance New settings for this instance as input by the user via `form()`.
 	 * @param array $old_instance Old settings for this instance.
 	 * @return array Settings to save or bool false to cancel saving.
+	 *
+	 * @since 0.9.0
 	 */
 	public function update( $new_instance, $old_instance ) {
 
@@ -130,6 +132,8 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 	 *
 	 * @param array $instance Current settings.
 	 * @return void
+	 *
+	 * @since 0.9.0
 	 */
 	public function form( $instance ) {
 
@@ -155,10 +159,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 			?>
 		</p>
 		<?php
+
 	}
 
 }
-
-add_action( 'widgets_init', function() {
-    register_widget( 'Genesis_Simple_FAQ_Widget' );
-});

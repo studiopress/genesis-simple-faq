@@ -6,9 +6,14 @@
  */
 class Genesis_Simple_FAQ_Assets {
 
+	/**
+	 * Constructor.
+	 *
+	 * @since 0.9.0
+	 */
     public function __construct() {
 
-        // Print critical styles to header.
+		// Print critical styles to header.
 		add_action( 'wp_head', array( $this, 'print_critical_styles' ) );
 
 		// Register and maybe load scripts.
@@ -16,14 +21,14 @@ class Genesis_Simple_FAQ_Assets {
 
     }
 
-    /**
+	/**
 	 * Function to register plugin assets for later enqueuing.
 	 *
 	 * @return void
 	 *
 	 * @since 0.9.0
 	 */
-	function register_scripts() {
+	public function register_scripts() {
 
 		$vanilla_path = ( defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG )
 			? 'vanilla.genesis-simple-faq.js'
@@ -38,38 +43,38 @@ class Genesis_Simple_FAQ_Assets {
 
 	}
 
-    /**
+	/**
 	 * Function to load appropriate FAQ assets.
 	 *
 	 * @return void
 	 *
 	 * @since 0.9.0
 	 */
-	function enqueue_scripts() {
+	public function enqueue_scripts() {
 
 		if ( wp_script_is( 'jquery', 'registered' ) ) {
 			wp_enqueue_script( 'gs-faq-jquery-js' );
-            wp_localize_script(
-                'gs-faq-jquery-js',
-                'gs_faq_animation',
-                array(
-                    'js_animation' => apply_filters( 'gs_faq_js_animation', true ),
-                )
-            );
+			wp_localize_script(
+				'gs-faq-jquery-js',
+				'gs_faq_animation',
+				array(
+					'js_animation' => apply_filters( 'gs_faq_js_animation', true ),
+				)
+			);
 		} else {
 			wp_enqueue_script( 'gs-faq-vanilla-js' );
 		}
 
 	}
 
-    /**
+	/**
 	 * Function to output the plugin's basic styles.
 	 *
 	 * @return void
 	 *
 	 * @since 0.9.0
 	 */
-	function print_critical_styles() {
+	public function print_critical_styles() {
 
 		$styles = sprintf(
 			'.gs-faq {
@@ -111,18 +116,7 @@ class Genesis_Simple_FAQ_Assets {
 
 	}
 
-    /**
-	 * Public method to load the scripts and styles on the front-end.
-	 *
-	 * @return void
-	 *
-	 * @since 0.9.0
-	 */
-	public function load_scripts() {
-		$this->enqueue_scripts();
-	}
-
-    /**
+	/**
 	 * Helper function to minify CSS output.
 	 *
 	 * @param  string $css CSS to minify.
