@@ -98,6 +98,8 @@ final class Genesis_Simple_FAQ {
 
 		$this->load_plugin_textdomain();
 
+		register_activation_hook( __FILE__, 'flush_rewrite_rules' );
+
 		add_action( 'admin_notices', array( $this, 'requirements_notice' ) );
 		add_action( 'genesis_setup', array( $this, 'instantiate' ) );
 		add_action( 'widgets_init',  array( $this, 'register_widgets' ) );
