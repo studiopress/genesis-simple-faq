@@ -2,7 +2,9 @@
 /*
 Plugin Name: Genesis Simple FAQ
 Plugin URI: https://github.com/copyblogger/genesis-simple-faq
+
 Description: A plugin for the Genesis Framework to manage FAQ components via shortcodes.
+
 Author: StudioPress
 Author URI: http://www.studiopress.com/
 
@@ -115,9 +117,9 @@ final class Genesis_Simple_FAQ {
 
 		if ( ! defined( 'PARENT_THEME_VERSION' ) || ! version_compare( PARENT_THEME_VERSION, $this->min_genesis_version, '>=' ) ) {
 
-			$action = defined( 'PARENT_THEME_VERSION' ) ? __( 'upgrade to', 'plugin-boilerplate' ) : __( 'install and activate', 'plugin-boilerplate' );
+			$action = defined( 'PARENT_THEME_VERSION' ) ? __( 'upgrade to', 'genesis-simple-faq' ) : __( 'install and activate', 'genesis-simple-faq' );
 
-			$message = sprintf( __( 'This plugin requires WordPress %s and <a href="%s" target="_blank">Genesis %s</a>, or greater. Please %s the latest version of Genesis to use this plugin.', 'plugin-boilerplate' ), $this->min_wp_version, 'http://my.studiopress.com/?download_id=91046d629e74d525b3f2978e404e7ffa', $this->min_genesis_version, $action );
+			$message = sprintf( __( 'This plugin requires WordPress %s and <a href="%s" target="_blank">Genesis %s</a>, or greater. Please %s the latest version of Genesis to use this plugin.', 'genesis-simple-faq' ), $this->min_wp_version, 'http://my.studiopress.com/?download_id=91046d629e74d525b3f2978e404e7ffa', $this->min_genesis_version, $action );
 			echo '<div class="notice notice-warning"><p>' . $message . '</p></div>';
 
 		}
