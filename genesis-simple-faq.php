@@ -2,7 +2,9 @@
 /*
 Plugin Name: Genesis Simple FAQ
 Plugin URI: https://github.com/copyblogger/genesis-simple-faq
+
 Description: A plugin for the Genesis Framework to manage FAQ components via shortcodes.
+
 Author: StudioPress
 Author URI: http://www.studiopress.com/
 
@@ -26,6 +28,16 @@ final class Genesis_Simple_FAQ {
 	 * Plugin version
 	 */
 	public $plugin_version = '0.9.0';
+
+	/**
+	 * Minimum WordPress version
+	 */
+	 public $min_wp_version = '4.8';
+
+	/**
+	 * Minimum Genesis version
+	 */
+	 public $min_genesis_version = '2.5';
 
 	/**
 	 * The plugin textdomain, for translations.
@@ -86,30 +98,33 @@ final class Genesis_Simple_FAQ {
 	 */
 	public function init() {
 
-		register_activation_hook( __FILE__, array( $this, 'activation' ) );
-
 		$this->load_plugin_textdomain();
-		$this->instantiate();
 
-		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
+		register_activation_hook( __FILE__, 'flush_rewrite_rules' );
+
+		add_action( 'admin_notices', array( $this, 'requirements_notice' ) );
+		add_action( 'genesis_setup', array( $this, 'instantiate' ) );
+		add_action( 'widgets_init',  array( $this, 'register_widgets' ) );
 
 	}
 
 	/**
-	 * Plugin activation hook. Runs when plugin is activated.
+	 * Show admin notice if minimum requirements aren't met.
 	 *
 	 * @since 0.9.0
 	 */
-	public function activation() {
+	public function requirements_notice() {
 
-		//* If Genesis is not the active theme, deactivate and die.
-		if ( 'genesis' != get_option( 'template' ) ) {
-			deactivate_plugins( plugin_basename( __FILE__ ) );
-			wp_die( sprintf( __( 'Sorry, you can\'t activate unless you have installed <a href="%s">Genesis</a>', $this->plugin_textdomain ), 'http://my.studiopress.com/themes/genesis/' ) );
+		if ( ! defined( 'PARENT_THEME_VERSION' ) || ! version_compare( PARENT_THEME_VERSION, $this->min_genesis_version, '>=' ) ) {
+
+			$plugin = get_plugin_data( __FILE__ );
+
+			$action = defined( 'PARENT_THEME_VERSION' ) ? __( 'upgrade to', 'genesis-simple-faq' ) : __( 'install and activate', 'genesis-simple-faq' );
+
+			$message = sprintf( __( '%s requires WordPress %s and <a href="%s" target="_blank">Genesis %s</a>, or greater. Please %s the latest version of Genesis to use this plugin.', 'genesis-simple-faq' ), $plugin['Name'], $this->min_wp_version, 'http://my.studiopress.com/?download_id=91046d629e74d525b3f2978e404e7ffa', $this->min_genesis_version, $action );
+			echo '<div class="notice notice-warning"><p>' . $message . '</p></div>';
+
 		}
-
-		// Flush rewrite rules for CPT.
-		flush_rewrite_rules();
 
 	}
 
