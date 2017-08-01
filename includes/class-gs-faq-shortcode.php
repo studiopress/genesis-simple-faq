@@ -92,6 +92,10 @@ class Genesis_Simple_FAQ_Shortcode {
 	 */
 	public function load_dependencies() {
 
+		if ( ! is_singular() ) {
+			return;
+		}
+
 		global $post;
 		$content = $post->post_content;
 
