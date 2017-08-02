@@ -76,7 +76,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		if ( $faqs->have_posts() ) {
 
-			echo '<div class="gs-faq">';
+			echo '<div class="gs-faq" role="tablist">';
 
 			while ( $faqs->have_posts() ) {
 				$faqs->the_post();
