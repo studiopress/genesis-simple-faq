@@ -58,7 +58,7 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		if ( $faqs->have_posts() ) {
 
-			$output = '<div class="gs-faq">';
+			$output = '<div class="gs-faq" role="tablist">';
 
 			while ( $faqs->have_posts() ) {
 				$faqs->the_post();
