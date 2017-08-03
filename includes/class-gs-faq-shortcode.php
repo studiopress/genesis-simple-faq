@@ -45,15 +45,21 @@ class Genesis_Simple_FAQ_Shortcode {
 		// If category IDs are set, use them. Otherwise retrieve all.
 		$cats = '' !== $a['cat'] ? explode( ',', $a['cat'] ) : array();
 
-		// Query arguments.
 		$args = array(
 			'orderby'    => 'post__in',
 			'post_type'  => 'gs_faq',
 			'post__in'   => $ids,
-			'cat'        => $cats,
 		);
 
-		// The loop.
+		if ( $cats ) {
+			$args['tax_query']  = array(
+				'relationship' => array(
+					'terms'    => $cats,
+					'taxonomy' => 'gs_faq_categories',
+				),
+			);
+		}
+
 		$faqs = new WP_Query( $args );
 
 		if ( $faqs->have_posts() ) {
