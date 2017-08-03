@@ -62,9 +62,11 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		$faqs = new WP_Query( $args );
 
+		$output = '';
+
 		if ( $faqs->have_posts() ) {
 
-			$output = '<div class="gs-faq" role="tablist">';
+			$output .= '<div class="gs-faq" role="tablist">';
 
 			while ( $faqs->have_posts() ) {
 				$faqs->the_post();
