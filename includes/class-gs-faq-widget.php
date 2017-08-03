@@ -105,7 +105,9 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 			echo '</div>';
 
 		} else {
-			echo '<p>No FAQs were found.</p>';
+
+			printf( '<p>%s</p>', esc_html__( 'No FAQs were found.', 'genesis-simple-faq' ) );
+
 		}
 
 		wp_reset_query();
