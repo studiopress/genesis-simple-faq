@@ -73,8 +73,8 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 		);
 
 		if ( $instance['taxonomy'] ) {
-			$faq_args['tax_query']  = array(
-				'relationship' => array(
+			$faq_args['tax_query'] = array(
+				array(
 					'terms'    => $instance['taxonomy'],
 					'taxonomy' => 'gs_faq_categories',
 				),

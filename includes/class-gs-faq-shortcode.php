@@ -52,8 +52,8 @@ class Genesis_Simple_FAQ_Shortcode {
 		);
 
 		if ( $cats ) {
-			$args['tax_query']  = array(
-				'relationship' => array(
+			$args['tax_query'] = array(
+				array(
 					'terms'    => $cats,
 					'taxonomy' => 'gs_faq_categories',
 				),
