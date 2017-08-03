@@ -6,7 +6,7 @@
  */
 class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
-    /**
+	/**
 	 * Holds widget settings defaults, populated in constructor.
 	 *
 	 * @var array
@@ -20,7 +20,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 	 */
 	public $id_base = 'gs-faq-widget';
 
-    /**
+	/**
 	 * Constructor. Set the default widget options and create widget.
 	 */
 	public function __construct() {
@@ -151,8 +151,10 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 			<?php
 			wp_dropdown_categories(
 				array(
+					'id'              => $this->get_field_id( 'taxonomy' ),
+					'name'            => $this->get_field_name( 'taxonomy' ),
 					'taxonomy'        => 'gs_faq_categories',
-					'selected'        => $instance['cat'],
+					'selected'        => $instance['taxonomy'],
 					'show_option_all' => 'All Categories',
 				)
 			);
