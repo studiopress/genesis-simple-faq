@@ -101,7 +101,7 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		// Load assets if in post content.
 		if ( has_shortcode( $content, 'gs_faq' ) ) {
-			Genesis_Simple_FAQ()->assets->load_scripts();
+			Genesis_Simple_FAQ()->assets->enqueue_scripts();
 		}
 
 	}
