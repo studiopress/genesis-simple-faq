@@ -68,11 +68,20 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title']; // WPCS: prefix ok.
 		}
 
-		// The FAQ loop.
-		$faqs = new WP_Query( array(
-			'post_type' => 'gs_faq',
-			'cat'       => $instance['taxonomy'],
-		));
+		$faq_args = array(
+			'post_type'  => 'gs_faq',
+		);
+
+		if ( $instance['taxonomy'] ) {
+			$faq_args['tax_query']  = array(
+				'relationship' => array(
+					'terms'    => $instance['taxonomy'],
+					'taxonomy' => 'gs_faq_categories',
+				),
+			);
+		}
+
+		$faqs = new WP_Query( $faq_args );
 
 		if ( $faqs->have_posts() ) {
 
