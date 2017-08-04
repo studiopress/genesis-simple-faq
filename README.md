@@ -26,6 +26,8 @@ Or by one ore more category:
 - **id**: The FAQ id, either singular or a comma-separated list.
 - **cat**: The FAQ category id, either singular or a comma-separated list.
 
+You can also show FAQs by using the built in widget. Just go to the Appearance > Widgets screen and drag the Genesis Simple FAQ widget to the widget area where you would like it to display. Then, enter a title and select a category to display FAQs from, and click save.
+
 ## Filters
 Currently, there are three filters: one to toggle JS animation on or off, one to control critical CSS output, and one to control the default FAQ markup.
 
