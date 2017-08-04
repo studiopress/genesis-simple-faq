@@ -83,7 +83,7 @@ class Genesis_Simple_FAQ_Assets {
 
 			.gs-faq__question {
 				display: block;
-				margin-top: 20px;
+				margin-top: 10px;
 				text-align: left;
 				width: 100%%;
 			}
