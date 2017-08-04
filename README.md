@@ -15,9 +15,13 @@ To find the shortcode for that specific FAQ:
 1. Navigate to Genesis Simple FAQ > All FAQs.
 2. The shortcode will be displayed in the table for each FAQ.
 
-The shortcode format is:
+You can show FAQs by one ore more ID:
 
-`[gs_faq id="53,41" cat="14"]`
+`[gs_faq id="53,41"]`
+
+Or by one ore more category:
+
+`[gs_faq cat="1,2,3,4"]`
 
 - **id**: The FAQ id, either singular or a comma-separated list.
 - **cat**: The FAQ category id, either singular or a comma-separated list.
@@ -28,7 +32,7 @@ Currently, there are three filters: one to toggle JS animation on or off, one to
 ### JS Animation (jQuery Only)
 By default, animation is set to true. This will add a slide animation to showing/hiding the FAQ. To remove JS animation and rely on classes to do your state-changing, add the following to your `functions.php` file:
 
-`add_filter( 'gs_faq_animation', '__return_false' );`
+`add_filter( 'gs_faq_js_animation', '__return_false' );`
 
 ### Critical CSS
 You can modify the CSS output using the following filter (styles are minified on the front-end):
@@ -45,7 +49,7 @@ function your_custom_function( $styles ) {
 		.gs-faq__question {
 			display: block;
 			text-align: left;
-			width: 100%%;
+			width: 100%;
 		}
 
 		.gs-faq__answer {
@@ -65,7 +69,7 @@ The following filter accepts 3 parameters:
 - `$question`: The title of the FAQ, usually a question.
 - `$answer`: The content of the FAQ, usually the answer.
 ```php
-add_filter( 'gs_faq_template', 'your_custom_function' );
+add_filter( 'gs_faq_template', 'your_custom_function', 10, 3 );
 function your_custom_function( $template, $question, $answer ) {
 
 	$template = sprintf(
