@@ -2,7 +2,7 @@
 A simple plugin to handle FAQ layout and interaction with a shortcode.
 
 ## Usage
-Adding a FAQ is easy, and relies on custom post types to organize and format your FAQs. To add an FAQ, do the following:
+Adding a FAQ is easy and relies on custom post types to organize and format your FAQs. To add an FAQ, do the following:
 
 1. Go to Genesis Simple FAQ > All FAQs.
 2. Enter a question in the Title box (required).
@@ -12,10 +12,10 @@ Adding a FAQ is easy, and relies on custom post types to organize and format you
 
 To find the shortcode for that specific FAQ:
 
-1. Navigate to Genesis Simple FAQ > All FAQs.
+1. Go to Genesis Simple FAQ > All FAQs.
 2. The shortcode will be displayed in the table for each FAQ.
 
-You can show FAQs by one ore more ID:
+You can show FAQs by one or more ID:
 
 `[gs_faq id="53,41"]`
 
@@ -25,6 +25,23 @@ Or by one ore more category:
 
 - **id**: The FAQ id, either singular or a comma-separated list.
 - **cat**: The FAQ category id, either singular or a comma-separated list.
+
+NOTE: shortcodes should not be entered on consecutive lines, like so:
+
+```
+[gs_faq id="X"]
+[gs_faq id="X"]
+
+```
+
+Instead, shortcodes should be separated by at least one blank line, like so:
+
+```
+[gs_faq id="X"]
+
+[gs_faq id="X"]
+
+```
 
 You can also show FAQs by using the built in widget. Just go to the Appearance > Widgets screen and drag the Genesis Simple FAQ widget to the widget area where you would like it to display. Then, enter a title and select a category to display FAQs from, and click save.
 
