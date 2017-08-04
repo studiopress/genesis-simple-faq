@@ -1,5 +1,5 @@
 === Genesis Simple FAQ ===
-Contributors: studiopress, calvinkoepke, nathanrice
+Contributors: studiopress, calvinkoepke, nathanrice, modernnerd
 Tags: genesis, faq
 Requires at least: 4.8
 Tested up to: 4.8
