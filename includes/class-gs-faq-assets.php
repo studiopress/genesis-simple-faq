@@ -85,7 +85,8 @@ class Genesis_Simple_FAQ_Assets {
 				display: block;
 				margin-top: 10px;
 				text-align: left;
-				width: 100%%;
+				white-space: normal;
+				width: 100%;
 			}
 
 			.gs-faq__question:first-of-type {
