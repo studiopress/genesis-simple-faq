@@ -4,11 +4,11 @@ A simple plugin to handle FAQ layout and interaction with a shortcode.
 ## Usage
 Adding a FAQ is easy, and relies on custom post types to organize and format your FAQs. To add an FAQ, do the following:
 
-1. Navigate in the menu to Genesis Simple FAQs > Add New.
+1. Go to Genesis Simple FAQ > All FAQs.
 2. Enter a question in the Title box (required).
 3. Enter an answer into the Content Editor (required).
 3. Set a category, if applicable (optional).
-4. Hit publish.
+4. Click publish.
 
 To find the shortcode for that specific FAQ:
 
