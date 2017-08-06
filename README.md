@@ -19,7 +19,7 @@ You can show FAQs by one or more ID:
 
 `[gs_faq id="53,41"]`
 
-Or by one ore more category:
+Or by one or more category:
 
 `[gs_faq cat="1,2,3,4"]`
 
