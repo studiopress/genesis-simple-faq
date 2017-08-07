@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Genesis Simple FAQ 0.9.0\n"
 "Report-Msgid-Bugs-To: StudioPress <translations@studiopress.com>\n"
-"POT-Creation-Date: 2017-05-22 22:21:10+00:00\n"
+"POT-Creation-Date: 2017-08-07 20:30:58+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -24,18 +24,139 @@ msgstr ""
 "X-Poedit-SearchPath-0: .\n"
 "X-Textdomain-Support: yes\n"
 
-#: genesis-simple-faq.php:86
-msgid ""
-"Sorry, you can't activate unless you have installed <a "
-"href=\"%s\">Genesis</a>"
+#: genesis-simple-faq.php:122
+msgid "upgrade to"
 msgstr ""
 
-#: includes/class-genesis-simple-faq-shortcode.php:37
-msgid "Show Hidden Content"
+#: genesis-simple-faq.php:122
+msgid "install and activate"
+msgstr ""
+
+#: genesis-simple-faq.php:124
+msgid ""
+"%s requires WordPress %s and <a href=\"%s\" target=\"_blank\">Genesis "
+"%s</a>, or greater. Please %s the latest version of Genesis to use this "
+"plugin."
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:41
+msgid "Genesis Simple FAQs"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Genesis Simple FAQ"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:43
+msgid "Simple FAQs"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:45
+msgid "Add New FAQ"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:46
+msgid "Edit FAQ"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:47
+msgid "New FAQ"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:48
+msgid "View FAQ"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:49
+msgid "View FAQs"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:50
+msgid "Search FAQs"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:51
+msgid "No FAQs found"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:52
+msgid "No FAQs found in Trash"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:53
+msgid "All FAQs"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:54
+msgid "Insert into FAQ"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:55
+msgid "Uploaded to this FAQ"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:89 includes/class-gs-faq-cpt.php:92
+msgid "FAQ updated."
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:90
+msgid "Custom field updated."
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:91
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:93
+msgid "FAQ restored to revision from %s"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:94
+msgid "FAQ published."
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:95
+msgid "FAQ saved."
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:96
+msgid "FAQ submitted."
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:98
+msgid "FAQ scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:99
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:101
+msgid "FAQ draft updated."
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:130
+msgid "Shortcode"
+msgstr ""
+
+#: includes/class-gs-faq-taxonomy.php:18
+msgid "Categories"
+msgstr ""
+
+#: includes/class-gs-faq-widget.php:35
+msgid "Displays Genesis Simple FAQs."
+msgstr ""
+
+#: includes/class-gs-faq-widget.php:109
+msgid "No FAQs were found."
+msgstr ""
+
+#: includes/class-gs-faq-widget.php:156
+msgid "Title"
+msgstr ""
+
+#: includes/class-gs-faq-widget.php:161
+msgid "Choose a category."
 msgstr ""
 
 #. Plugin URI of the plugin/theme
@@ -52,4 +173,9 @@ msgstr ""
 
 #. Author URI of the plugin/theme
 msgid "http://www.studiopress.com/"
+msgstr ""
+
+#: includes/class-gs-faq-cpt.php:44
+msgctxt "genesis-simple-faq"
+msgid "Add New"
 msgstr ""
