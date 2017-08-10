@@ -82,7 +82,7 @@ function your_custom_function( $styles ) {
 		.gs-faq__question {
 			display: block;
 			text-align: left;
-			width: 100%;
+			width: 100%%;
 		}
 
 		.gs-faq__answer {
