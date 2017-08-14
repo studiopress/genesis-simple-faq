@@ -60,7 +60,7 @@ You can modify the CSS output using the following filter (styles are minified on
 add_filter( 'gs_faq_critical_styles', 'your_custom_function' );
 function your_custom_function( $styles ) {
 
-	$styles = sprintf(
+	$styles =
 		'.gs-faq {
 			padding: 5px 0;
 		}
@@ -68,14 +68,13 @@ function your_custom_function( $styles ) {
 		.gs-faq__question {
 			display: block;
 			text-align: left;
-			width: 100%%;
+			width: 100%;
 		}
 
 		.gs-faq__answer {
 			display: none;
 			padding: 5px;
-		}'
-	);
+		}';
 
 	return $styles;
 

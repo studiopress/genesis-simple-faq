@@ -76,7 +76,7 @@ class Genesis_Simple_FAQ_Assets {
 	 */
 	public function print_critical_styles() {
 
-		$styles = sprintf(
+		$styles =
 			'.gs-faq {
 				padding: 5px 0;
 			}
@@ -86,7 +86,7 @@ class Genesis_Simple_FAQ_Assets {
 				margin-top: 10px;
 				text-align: left;
 				white-space: normal;
-				width: 100%%;
+				width: 100%;
 			}
 
 			.gs-faq__question:first-of-type {
@@ -108,8 +108,7 @@ class Genesis_Simple_FAQ_Assets {
 
 			.gs-faq__answer.no-animation.gs-faq--expanded {
 				display: block;
-			}'
-		);
+			}';
 
 		$css = sprintf( '<style type="text/css" id="gs-faq-critical">%s</style>', apply_filters( 'gs_faq_critical_styles', $this->minifyCSS( $styles ) ) );
 
