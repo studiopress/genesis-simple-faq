@@ -104,7 +104,6 @@ final class Genesis_Simple_FAQ {
 
 		add_action( 'admin_notices', array( $this, 'requirements_notice' ) );
 		add_action( 'genesis_setup', array( $this, 'instantiate' ) );
-		add_action( 'widgets_init',  array( $this, 'register_widgets' ) );
 
 	}
 
@@ -173,6 +172,7 @@ final class Genesis_Simple_FAQ {
 		 */
 		require_once( $this->plugin_dir_path . 'includes/class-gs-faq-widget.php' );
 		$this->widget = new Genesis_Simple_FAQ_Widget;
+		add_action( 'widgets_init',  array( $this, 'register_widgets' ) );
 
 	}
 
