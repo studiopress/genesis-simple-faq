@@ -42,20 +42,20 @@ Or by one or more category:
 
 NOTE: shortcodes should not be entered on consecutive lines, like so:
 
-```
+`
 [gs_faq id="X"]
 [gs_faq id="X"]
 
-```
+`
 
 Instead, shortcodes should be separated by at least one blank line, like so:
 
-```
+`
 [gs_faq id="X"]
 
 [gs_faq id="X"]
 
-```
+`
 
 You can also show FAQs by using the built in widget. Just go to the Appearance > Widgets screen and drag the Genesis Simple FAQ widget to the widget area where you would like it to display. Then, enter a title and select a category to display FAQs from, and click save.
 
@@ -70,7 +70,7 @@ By default, animation is set to true. This will add a slide animation to showing
 ### Critical CSS
 You can modify the CSS output using the following filter (styles are minified on the front-end):
 
-```php
+`
 add_filter( 'gs_faq_critical_styles', 'your_custom_function' );
 function your_custom_function( $styles ) {
 
@@ -93,14 +93,15 @@ function your_custom_function( $styles ) {
 	return $styles;
 
 }
-```
+`
 
 ### Default Markup
 The following filter accepts 3 parameters:
 - `$template`: Full string of HTML to output.
 - `$question`: The title of the FAQ, usually a question.
 - `$answer`: The content of the FAQ, usually the answer.
-```php
+
+`
 add_filter( 'gs_faq_template', 'your_custom_function', 10, 3 );
 function your_custom_function( $template, $question, $answer ) {
 
@@ -113,7 +114,7 @@ function your_custom_function( $template, $question, $answer ) {
 	return $template;
 
 }
-```
+`
 
 == Changelog ==
 
