@@ -67,13 +67,31 @@ function your_custom_function( $styles ) {
 
 		.gs-faq__question {
 			display: block;
+			margin-top: 10px;
 			text-align: left;
+			white-space: normal;
 			width: 100%;
+		}
+
+		.gs-faq__question:first-of-type {
+			margin-top: 0;
 		}
 
 		.gs-faq__answer {
 			display: none;
 			padding: 5px;
+		}
+
+		.gs-faq__answer p:last-of-type {
+			margin-bottom: 0;
+		}
+
+		.gs-faq__answer__heading {
+			display: none;
+		}
+
+		.gs-faq__answer.no-animation.gs-faq--expanded {
+			display: block;
 		}';
 
 	return $styles;
