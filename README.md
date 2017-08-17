@@ -26,6 +26,10 @@ Or by one or more category:
 - **id**: The FAQ id, either singular or a comma-separated list.
 - **cat**: The FAQ category id, either singular or a comma-separated list.
 
+Alternatively, you can also display all FAQs by simply adding the shortcode without any parameters, like so:
+
+`[gs_faq]`
+
 NOTE: shortcodes should not be entered on consecutive lines, like so:
 
 ```
