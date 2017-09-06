@@ -9,6 +9,12 @@
 (function() {
 	'use strict';
 
+	// Determine if JS is on.
+	var body = document.body;
+	if ( ! body.classList.contains( 'js' ) ) {
+		body.classList.add( 'js' );
+	}
+
 	var index = 0;
 
 	document.addEventListener( 'DOMContentLoaded', function() {

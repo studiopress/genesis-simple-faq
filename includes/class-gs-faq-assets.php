@@ -82,18 +82,22 @@ class Genesis_Simple_FAQ_Assets {
 			}
 
 			.gs-faq__question {
-				display: block;
+				display: none;
 				margin-top: 10px;
 				text-align: left;
 				white-space: normal;
 				width: 100%;
 			}
 
+			.js .gs-faq__question {
+				display: block;
+			}
+
 			.gs-faq__question:first-of-type {
 				margin-top: 0;
 			}
 
-			.gs-faq__answer {
+			.js .gs-faq__answer {
 				display: none;
 				padding: 5px;
 			}
@@ -102,7 +106,7 @@ class Genesis_Simple_FAQ_Assets {
 				margin-bottom: 0;
 			}
 
-			.gs-faq__answer__heading {
+			.js .gs-faq__answer__heading {
 				display: none;
 			}
 
