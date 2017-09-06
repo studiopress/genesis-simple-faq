@@ -50,7 +50,11 @@ Instead, shortcodes should be separated by at least one blank line, like so:
 You can also show FAQs by using the built in widget. Just go to the Appearance > Widgets screen and drag the Genesis Simple FAQ widget to the widget area where you would like it to display. Then, enter a title and select a category to display FAQs from, and click save.
 
 ## Filters
-Currently, there are three filters: one to toggle JS animation on or off, one to control critical CSS output, and one to control the default FAQ markup.
+Currently, there are four filters:
+
+- One to toggle JS animation on or off.
+- Two to control critical CSS output.
+- One to control the default FAQ markup.
 
 ### JS Animation (jQuery Only)
 By default, animation is set to true. This will add a slide animation to showing/hiding the FAQ. To remove JS animation and rely on classes to do your state-changing, add the following to your `functions.php` file:
@@ -58,6 +62,12 @@ By default, animation is set to true. This will add a slide animation to showing
 `add_filter( 'gs_faq_js_animation', '__return_false' );`
 
 ### Critical CSS
+You can opt-out of critical CSS by using the following filter:
+
+```php
+add_filter( 'gs_faq_print_styles', '__return_false' );
+```
+
 You can modify the CSS output using the following filter (styles are minified on the front-end):
 
 ```php
@@ -70,18 +80,22 @@ function your_custom_function( $styles ) {
 		}
 
 		.gs-faq__question {
-			display: block;
+			display: none;
 			margin-top: 10px;
 			text-align: left;
 			white-space: normal;
 			width: 100%;
 		}
 
+		.js .gs-faq__question {
+			display: block;
+		}
+
 		.gs-faq__question:first-of-type {
 			margin-top: 0;
 		}
 
-		.gs-faq__answer {
+		.js .gs-faq__answer {
 			display: none;
 			padding: 5px;
 		}
@@ -90,7 +104,7 @@ function your_custom_function( $styles ) {
 			margin-bottom: 0;
 		}
 
-		.gs-faq__answer__heading {
+		.js .gs-faq__answer__heading {
 			display: none;
 		}
 

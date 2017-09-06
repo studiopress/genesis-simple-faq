@@ -2,7 +2,7 @@
 /**
  * Class to handle widget creation and behavior.
  *
- * @since 0.9.0
+ * @since 0.9.1
  */
 class Genesis_Simple_FAQ_Widget extends WP_Widget {
 

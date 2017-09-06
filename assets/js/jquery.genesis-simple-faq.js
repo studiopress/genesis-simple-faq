@@ -4,7 +4,7 @@
  *
  * @author Calvin Koepke
  *
- * @since 0.9.0
+ * @since 0.9.1
  */
 ( function( $, animation ) {
 	'use strict';

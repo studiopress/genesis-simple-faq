@@ -72,9 +72,15 @@ class Genesis_Simple_FAQ_Assets {
 	 *
 	 * @return void
 	 *
-	 * @since 0.9.0
+	 * @since 0.9.1
 	 */
 	public function print_critical_styles() {
+
+		$print = apply_filters( 'gs_faq_print_styles', true );
+
+		if ( $print === false ) {
+			return;
+		}
 
 		$styles =
 			'.gs-faq {
