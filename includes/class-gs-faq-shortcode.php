@@ -37,7 +37,7 @@ class Genesis_Simple_FAQ_Shortcode {
 		$a = shortcode_atts( array(
 			'id'    => '',
 			'cat'   => '',
-			'limit' => get_option( 'posts_per_page' )
+			'limit' => -1,
 		), $atts );
 
 		// If IDs are set, use them. Otherwise retrieve all.
@@ -50,7 +50,7 @@ class Genesis_Simple_FAQ_Shortcode {
 			'orderby'        => 'post__in',
 			'post_type'      => 'gs_faq',
 			'post__in'       => $ids,
-			'posts_per_page' => $a['limit']
+			'posts_per_page' => $a['limit'],
 		);
 
 		if ( $cats ) {

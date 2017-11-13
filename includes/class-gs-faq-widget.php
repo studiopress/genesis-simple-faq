@@ -28,7 +28,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 		$this->defaults = array(
 			'title'    => '',
 			'taxonomy' => '',
-			'limit'    => get_option( 'posts_per_page' ),
+			'limit'    => -1,
 		);
 
 		$widget_ops = array(
