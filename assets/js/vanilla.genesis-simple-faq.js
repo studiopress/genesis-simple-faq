@@ -4,10 +4,16 @@
  *
  * @author Calvin Koepke
  *
- * @since 0.9.0
+ * @since 0.9.1
  */
 (function() {
 	'use strict';
+
+	// Determine if JS is on.
+	var body = document.body;
+	if ( ! body.classList.contains( 'js' ) ) {
+		body.classList.add( 'js' );
+	}
 
 	var index = 0;
 
