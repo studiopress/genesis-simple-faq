@@ -29,16 +29,30 @@ To find the shortcode for that specific FAQ:
 1. Go to Genesis Simple FAQ > All FAQs.
 2. The shortcode will be displayed in the table for each FAQ.
 
-You can show FAQs by one or more ID:
+When using the shortcode to display your FAQs, you can either display all FAQs by adding the shortcode without any parameters:
 
-`[gs_faq id="53,41"]`
+`[gs_faq]`
 
-Or by one or more category:
+Or you can customize the display of FAQs using the following parameters:
 
-`[gs_faq cat="1,2,3,4"]`
+- **id**: The FAQ ID, either singular or a comma-separated list.
+- **cat**: The FAQ category ID, either singular or a comma-separated list.
+- **limit**: The number of FAQs that should be displayed.
 
-- **id**: The FAQ id, either singular or a comma-separated list.
-- **cat**: The FAQ category id, either singular or a comma-separated list.
+For example, FAQs can be displayed using one or more FAQ post type ID:
+
+`[gs_faq id="12, 24"]`
+
+Or by one or more category ID:
+
+`[gs_faq cat="10, 11"]`
+
+You can also specify how many FAQs will be displayed. For example:
+
+`[gs_faq cat="10, 11" limit="10"]`
+
+By default, the limit is set to the number of posts you've set to display in Settings > Reading.
+Enter `-1` to display an infinite number of FAQs.
 
 NOTE: shortcodes should not be entered on consecutive lines, like so:
 

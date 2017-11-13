@@ -4,17 +4,20 @@
  *
  * @author Calvin Koepke
  *
- * @since 0.9.0
+ * @since 0.9.1
  */
 ( function( $, animation ) {
 	'use strict';
+
+	// Determine if JS is on.
+	$( 'body' ).addClass( 'js' );
 
 	// Gather all the FAQ components on the page.
 	var $faqs = $( '.gs-faq__question' );
 	var index = 0;
 
 	// Event handler for toggling.
-	$('.gs-faq').on( 'click', '.gs-faq__question', function() {
+	$( '.gs-faq' ).on( 'click', '.gs-faq__question', function() {
 		handleClickEvent( $(this) );
 	});
 

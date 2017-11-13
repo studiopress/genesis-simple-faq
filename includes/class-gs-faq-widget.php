@@ -2,7 +2,7 @@
 /**
  * Class to handle widget creation and behavior.
  *
- * @since 0.9.0
+ * @since 0.9.1
  */
 class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
@@ -28,6 +28,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 		$this->defaults = array(
 			'title'    => '',
 			'taxonomy' => '',
+			'limit'    => -1,
 		);
 
 		$widget_ops = array(
@@ -69,7 +70,8 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 		}
 
 		$faq_args = array(
-			'post_type'  => 'gs_faq',
+			'post_type'      => 'gs_faq',
+			'posts_per_page' => $instance['limit']
 		);
 
 		if ( $instance['taxonomy'] ) {
@@ -133,6 +135,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		$new_instance['title']    = strip_tags( $new_instance['title'] );
 		$new_instance['taxonomy'] = intval( $new_instance['taxonomy'] );
+		$new_instance['limit']    = intval( $new_instance['limit'] );
 
 		return $new_instance;
 
@@ -155,6 +158,11 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 		<p>
 			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title', 'genesis-simple-faq' ); ?>:</label>
 			<input type="text" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat" />
+		</p>
+
+		<p>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e( 'FAQ Limit', 'genesis-simple-faq' ); ?>:</label>
+			<input type="number" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" class="widefat" />
 		</p>
 
 		<p>
