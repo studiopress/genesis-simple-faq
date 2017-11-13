@@ -132,6 +132,13 @@ function your_custom_function( $template, $question, $answer ) {
 
 == Changelog ==
 
+= 0.9.1 =
+
+* Add non-JS support.
+* Add CSS opt out filter.
+* Add category ID to taxonomy page.
+* Set default to show all FAQs.
+
 = 0.9.0 =
 
 * Initial release
