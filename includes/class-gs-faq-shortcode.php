@@ -78,7 +78,7 @@ class Genesis_Simple_FAQ_Shortcode {
 				$template = sprintf(
 					'<button class="gs-faq__question" type="button">%1$s</button><div class="gs-faq__answer no-animation"><h2 class="gs-faq__answer__heading">%1$s</h2>%2$s</div>',
 					esc_html( $question ),
-					$answer
+					do_shortcode( $answer )
 				);
 
 				// Allow filtering of the template markup.
