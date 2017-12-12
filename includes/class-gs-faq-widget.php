@@ -112,7 +112,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		}
 
-		wp_reset_query();
+		wp_reset_postdata();
 
 		echo $args['after_widget'];
 

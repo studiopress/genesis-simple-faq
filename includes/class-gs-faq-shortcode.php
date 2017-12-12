@@ -89,7 +89,7 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		}
 
-		wp_reset_query();
+		wp_reset_postdata();
 
 		return $output;
 
