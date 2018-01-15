@@ -28,7 +28,7 @@
     "description": "A simple plugin for the Genesis Framework to manage FAQ components.",
     "author": "Rainmaker Digital, LLC.",
     "authoruri": "http://www.rainmakerdigital.com/",
-    "version": "0.9.0",
+    "version": "0.9.1",
     "license": "GPL-2.0+",
     "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
     "textdomain": "genesis-simple-faq"

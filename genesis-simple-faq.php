@@ -8,7 +8,7 @@ Description: A plugin for the Genesis Framework to manage FAQ components via sho
 Author: StudioPress
 Author URI: http://www.studiopress.com/
 
-Version: 0.9.0
+Version: 0.9.1
 
 Text Domain: genesis-simple-faq
 Domain Path: /languages
