@@ -20,6 +20,7 @@ class Genesis_Simple_FAQ_Tax {
                 'public'       => false,
                 'rewrite'      => false,
                 'show_ui'      => true,
+                'show_in_rest' => true,
                 'hierarchical' => true,
             )
         );
