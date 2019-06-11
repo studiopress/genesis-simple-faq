@@ -38,6 +38,7 @@ class Genesis_Simple_FAQ_Shortcode {
 			'id'    => '',
 			'cat'   => '',
 			'limit' => -1,
+			'order' => 'DESC'
 		), $atts );
 
 		// If IDs are set, use them. Otherwise retrieve all.
@@ -48,6 +49,7 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		$args = array(
 			'orderby'        => 'post__in',
+			'order'			 => $a['order'],
 			'post_type'      => 'gs_faq',
 			'post__in'       => $ids,
 			'posts_per_page' => $a['limit'],
