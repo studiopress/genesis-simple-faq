@@ -8,11 +8,6 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
-		// Lint .php files for syntax errors
-		phplint: {
-			all: [ '*.php',	'lib/**/*.php' ]
-		},
-
 		// Add text domain as last argument of i18n functions
 		addtextdomain: {
 			php: {
