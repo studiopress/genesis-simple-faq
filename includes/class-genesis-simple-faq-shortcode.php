@@ -1,5 +1,11 @@
 <?php
 /**
+ * Genesis Simple FAQ shortcode class.
+ *
+ * @package genesis-simple-faq
+ */
+
+/**
  * Class to handle shortcode creation, rendering, and asset loading.
  *
  * @since 0.9.0
@@ -26,20 +32,23 @@ class Genesis_Simple_FAQ_Shortcode {
 	/**
 	 * Shortcode builder function.
 	 *
-	 * @param  array   $atts    Array of passed in attributes.
-	 * @param  array   $content The content the shortcode is wrapped around.
+	 * @param  array $atts    Array of passed in attributes.
+	 *
 	 * @return string  $faq     String of HTML to output.
 	 *
 	 * @since 0.9.0
 	 */
-	function shortcode( $atts ) {
+	public function shortcode( $atts ) {
 
-		$a = shortcode_atts( array(
-			'id'    => '',
-			'cat'   => '',
-			'limit' => -1,
-			'order' => 'DESC'
-		), $atts );
+		$a = shortcode_atts(
+			array(
+				'id'    => '',
+				'cat'   => '',
+				'limit' => -1,
+				'order' => 'DESC',
+			),
+			$atts
+		);
 
 		// If IDs are set, use them. Otherwise retrieve all.
 		$ids = '' !== $a['id'] ? explode( ',', $a['id'] ) : array();
@@ -49,14 +58,14 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		$args = array(
 			'orderby'        => 'post__in',
-			'order'			 => $a['order'],
+			'order'          => $a['order'],
 			'post_type'      => 'gs_faq',
 			'post__in'       => $ids,
 			'posts_per_page' => $a['limit'],
 		);
 
 		if ( $cats ) {
-			$args['tax_query'] = array(
+			$args['tax_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				array(
 					'terms'    => $cats,
 					'taxonomy' => 'gs_faq_categories',
