@@ -69,7 +69,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 			Genesis_Simple_FAQ()->assets->enqueue_scripts();
 		}
 
-		echo wp_kses_post( $args['before_widget'] );
+		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		if ( ! empty( $instance['title'] ) ) {
 			echo wp_kses_post( $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title'] ); // WPCS: prefix ok.
@@ -107,7 +107,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 				);
 
 				// Allow filtering of the template markup.
-				echo wp_kses_post( apply_filters( 'gs_faq_template', $template, $question, $answer ) );
+				echo apply_filters( 'gs_faq_template', $template, $question, $answer ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 			echo '</div>';
