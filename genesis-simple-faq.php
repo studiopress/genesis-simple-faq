@@ -23,6 +23,8 @@ define( 'GENESIS_SIMPLE_PLUGIN_VERSION', '0.9.1' );
 define( 'GENESIS_SIMPLE_FAQ_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GENESIS_SIMPLE_FAQ_URL', plugins_url( '', __FILE__ ) );
 
+require_once GENESIS_SIMPLE_FAQ_DIR . '/includes/class-genesis-simple-faq.php';
+
 /**
  * Helper function to retrieve the static object without using globals.
  *

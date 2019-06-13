@@ -133,14 +133,14 @@ final class Genesis_Simple_FAQ {
 			/* translators: 1 is the Plugin name, 2 is the minimum WordPress version, 4 is the Genesis download link and 4 is action, upgrade or install. */
 			$message = sprintf( __( '%1$s requires WordPress %2$s and <a href="%3$s" target="_blank">Genesis %4$s</a>, or greater. Please %5$s the latest version of Genesis to use this plugin.', 'genesis-simple-faq' ), $plugin['Name'], $this->min_wp_version, 'http://my.studiopress.com/?download_id=91046d629e74d525b3f2978e404e7ffa', $this->min_genesis_version, $action );
 
-			$allowed_tags = array(
+			$allowed_tagenesis = array(
 				'a' => array(
 					'href'   => array(),
 					'target' => array(),
 				),
 			);
 
-			echo '<div class="notice notice-warning"><p>' . wp_kses( $message, $allowed_tags ) . '</p></div>';
+			echo '<div class="notice notice-warning"><p>' . wp_kses( $message, $allowed_tagenesis ) . '</p></div>';
 
 		}
 
@@ -165,31 +165,31 @@ final class Genesis_Simple_FAQ {
 		/**
 		 * Instance of the plugin assets (loaded in the class).
 		 */
-		require_once $this->plugin_dir_path . 'includes/class-gs-faq-assets.php';
+		require_once $this->plugin_dir_path . 'includes/class-genesis-simple-faq-assets.php';
 		$this->assets = new Genesis_Simple_FAQ_Assets();
 
 		/**
 		 * Instance of the Genesis Simple FAQ custom post type.
 		 */
-		require_once $this->plugin_dir_path . 'includes/class-gs-faq-cpt.php';
+		require_once $this->plugin_dir_path . 'includes/class-genesis-simple-faq-cpt.php';
 		$this->post_type = new Genesis_Simple_FAQ_CPT();
 
 		/**
 		 * Instance of the Genesis Simple FAQ taxonomy.
 		 */
-		require_once $this->plugin_dir_path . 'includes/class-gs-faq-taxonomy.php';
+		require_once $this->plugin_dir_path . 'includes/class-genesis-simple-faq-taxonomy.php';
 		$this->post_type_tax = new Genesis_Simple_FAQ_Taxonomy();
 
 		/**
 		 * Instance of the Genesis Simple FAQ shortcode.
 		 */
-		require_once $this->plugin_dir_path . 'includes/class-gs-faq-shortcode.php';
+		require_once $this->plugin_dir_path . 'includes/class-genesis-simple-faq-shortcode.php';
 		$this->shortcode = new Genesis_Simple_FAQ_Shortcode();
 
 		/**
 		 * Instance of the Genesis Simple FAQ Widget.
 		 */
-		require_once $this->plugin_dir_path . 'includes/class-gs-faq-widget.php';
+		require_once $this->plugin_dir_path . 'includes/class-genesis-simple-faq-widget.php';
 		$this->widget = new Genesis_Simple_FAQ_Widget();
 		add_action( 'widgets_init', array( $this, 'register_widgets' ) );
 
