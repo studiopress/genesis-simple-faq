@@ -13,7 +13,7 @@
  * Text Domain: genesis-simple-faq
  * Domain Path: /languages
  *
- * License: GPL-2.0+
+ * License: GPL-2.0-or-later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.html
  *
  * @package genesis-simple-faq
