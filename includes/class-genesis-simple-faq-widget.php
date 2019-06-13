@@ -72,7 +72,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		if ( ! empty( $instance['title'] ) ) {
-			echo wp_kses_post( $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title'] ); // WPCS: prefix ok.
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title']; // phpcs:ignore
 		}
 
 		$faq_args = array(
@@ -120,7 +120,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		wp_reset_postdata();
 
-		echo wp_kses_post( $args['after_widget'] );
+		echo $args['after_widget'];
 
 	}
 
