@@ -140,7 +140,7 @@ final class Genesis_Simple_FAQ {
 				),
 			);
 
-			echo '<div class="notice notice-warning"><p>' . wp_kses( $message, $allowed_tagenesis ) . '</p></div>';
+			echo '<div class="notice notice-warning"><p>' . wp_kses( $message, $allowed_tag ) . '</p></div>';
 
 		}
 
