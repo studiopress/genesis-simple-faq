@@ -133,7 +133,7 @@ final class Genesis_Simple_FAQ {
 			/* translators: 1 is the Plugin name, 2 is the minimum WordPress version, 4 is the Genesis download link and 4 is action, upgrade or install. */
 			$message = sprintf( __( '%1$s requires WordPress %2$s and <a href="%3$s" target="_blank">Genesis %4$s</a>, or greater. Please %5$s the latest version of Genesis to use this plugin.', 'genesis-simple-faq' ), $plugin['Name'], $this->min_wp_version, 'http://my.studiopress.com/?download_id=91046d629e74d525b3f2978e404e7ffa', $this->min_genesis_version, $action );
 
-			$allowed_tagenesis = array(
+			$allowed_tag = array(
 				'a' => array(
 					'href'   => array(),
 					'target' => array(),
