@@ -1,5 +1,5 @@
 {
-	"name": "studiopress/agentpress-listing",
+	"name": "studiopress/genesis-simple-faq",
 	"type": "wordpress-plugin",
 	"description": "A plugin for the Genesis Framework to manage FAQ components via shortcodes.",
 	"homepage": "https://github.com/studiopress/genesis-simple-faq",
