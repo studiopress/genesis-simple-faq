@@ -120,7 +120,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		wp_reset_postdata();
 
-		echo $args['after_widget'];
+		echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
 
