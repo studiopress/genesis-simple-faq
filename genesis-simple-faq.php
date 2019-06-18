@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name: Genesis Simple FAQ
- * Plugin URI: https://github.com/copyblogger/genesis-simple-faq
+ * Plugin URI: https://github.com/studiopress/genesis-simple-faq
  *
  * Description: A plugin for the Genesis Framework to manage FAQ components via shortcodes.
  *
  * Author: StudioPress
- * Author URI: http://www.studiopress.com/
+ * Author URI: https://www.studiopress.com/
  *
  * Version: 0.9.1
  *
