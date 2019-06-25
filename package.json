@@ -4,30 +4,21 @@
   "version": "0.9.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/copyblogger/genesis-simple-faq"
+    "url": "https://github.com/studiopress/genesis-simple-faq"
   },
-  "dependencies": {},
   "devDependencies": {
-    "grunt": "^1.0.1",
-    "grunt-checktextdomain": "*",
-    "grunt-contrib-cssmin": "*",
-    "grunt-contrib-imagemin": "*",
-    "grunt-contrib-jshint": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-csscomb": "*",
-    "grunt-jsbeautifier": "*",
-    "grunt-jsvalidate": "*",
-    "grunt-phplint": "*",
-    "grunt-wp-i18n": "*",
-    "load-grunt-tasks": "*"
+    "node-wp-i18n": "^1.2.3"
+  },
+  "scripts": {
+    "makepot": "wpi18n makepot --exclude=vendor,node_modules",
+    "addtextdomain": "wpi18n addtextdomain --exclude=vendor,node_modules"
   },
   "plugin": {
     "name": "Genesis Simple FAQ",
-    "uri": "https://github.com/copyblogger/genesis-simple-faq",
+    "uri": "https://github.com/studiopress/genesis-simple-faq",
     "description": "A simple plugin for the Genesis Framework to manage FAQ components.",
     "author": "StudioPress",
-    "authoruri": "http://www.studiopress.com/",
+    "authoruri": "https://www.studiopress.com/",
     "version": "0.9.1",
     "license": "GPL-2.0+",
     "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
