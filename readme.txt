@@ -3,7 +3,7 @@ Contributors: studiopress, calvinkoepke, nathanrice, modernnerd
 Tags: genesis, faq
 Requires at least: 4.8
 Tested up to: 4.8
-Stable tag: 0.9.0
+Stable tag: 0.9.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -131,6 +131,13 @@ function your_custom_function( $template, $question, $answer ) {
 `
 
 == Changelog ==
+
+= 1.0.0 =
+
+* Update the code to comply with WordPress coding standards.
+* Add order attribute.
+* Add compatibility for taxonomy with Gutenberg.
+* Process shortcode in answers.
 
 = 0.9.1 =
 

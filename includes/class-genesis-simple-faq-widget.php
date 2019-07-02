@@ -1,5 +1,11 @@
 <?php
 /**
+ * Genesis Simple FAQ widget class.
+ *
+ * @package genesis-simple-faq
+ */
+
+/**
  * Class to handle widget creation and behavior.
  *
  * @since 0.9.1
@@ -63,19 +69,19 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 			Genesis_Simple_FAQ()->assets->enqueue_scripts();
 		}
 
-		echo $args['before_widget'];
+		echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 		if ( ! empty( $instance['title'] ) ) {
-			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title']; // WPCS: prefix ok.
+			echo $args['before_title'] . apply_filters( 'widget_title', $instance['title'], $instance, $this->id_base ) . $args['after_title']; // phpcs:ignore
 		}
 
 		$faq_args = array(
 			'post_type'      => 'gs_faq',
-			'posts_per_page' => $instance['limit']
+			'posts_per_page' => $instance['limit'],
 		);
 
 		if ( $instance['taxonomy'] ) {
-			$faq_args['tax_query'] = array(
+			$faq_args['tax_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				array(
 					'terms'    => $instance['taxonomy'],
 					'taxonomy' => 'gs_faq_categories',
@@ -97,11 +103,11 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 				$template = sprintf(
 					'<button class="gs-faq__question" type="button">%1$s</button><div class="gs-faq__answer no-animation"><h2 class="gs-faq__answer__heading">%1$s</h2>%2$s</div>',
 					esc_html( $question ),
-					$answer
+					do_shortcode( $answer )
 				);
 
 				// Allow filtering of the template markup.
-				echo apply_filters( 'gs_faq_template', $template, $question, $answer );
+				echo apply_filters( 'gs_faq_template', $template, $question, $answer ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 
 			echo '</div>';
@@ -112,9 +118,9 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		}
 
-		wp_reset_query();
+		wp_reset_postdata();
 
-		echo $args['after_widget'];
+		echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 
 	}
 
@@ -133,7 +139,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 	 */
 	public function update( $new_instance, $old_instance ) {
 
-		$new_instance['title']    = strip_tags( $new_instance['title'] );
+		$new_instance['title']    = wp_strip_all_tags( $new_instance['title'] );
 		$new_instance['taxonomy'] = intval( $new_instance['taxonomy'] );
 		$new_instance['limit']    = intval( $new_instance['limit'] );
 
@@ -156,17 +162,17 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 
 		?>
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php _e( 'Title', 'genesis-simple-faq' ); ?>:</label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>"><?php esc_html_e( 'Title', 'genesis-simple-faq' ); ?>:</label>
 			<input type="text" id="<?php echo esc_attr( $this->get_field_id( 'title' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'title' ) ); ?>" value="<?php echo esc_attr( $instance['title'] ); ?>" class="widefat" />
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php _e( 'FAQ Limit', 'genesis-simple-faq' ); ?>:</label>
+			<label for="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>"><?php esc_html_e( 'FAQ Limit', 'genesis-simple-faq' ); ?>:</label>
 			<input type="number" id="<?php echo esc_attr( $this->get_field_id( 'limit' ) ); ?>" name="<?php echo esc_attr( $this->get_field_name( 'limit' ) ); ?>" value="<?php echo esc_attr( $instance['limit'] ); ?>" class="widefat" />
 		</p>
 
 		<p>
-			<label for="<?php echo esc_attr( $this->get_field_name( 'taxonomy' ) ); ?>"><?php _e( 'Choose a category.', 'genesis-simple-faq' ); ?></label><br />
+			<label for="<?php echo esc_attr( $this->get_field_name( 'taxonomy' ) ); ?>"><?php esc_html_e( 'Choose a category.', 'genesis-simple-faq' ); ?></label><br />
 			<?php
 			wp_dropdown_categories(
 				array(

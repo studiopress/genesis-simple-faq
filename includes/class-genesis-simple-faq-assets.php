@@ -1,5 +1,11 @@
 <?php
 /**
+ * Genesis Simple FAQ assets class.
+ *
+ * @package genesis-simple-faq
+ */
+
+/**
  * This file handles asset loading.
  *
  * @since 0.9.0
@@ -11,7 +17,7 @@ class Genesis_Simple_FAQ_Assets {
 	 *
 	 * @since 0.9.0
 	 */
-    public function __construct() {
+	public function __construct() {
 
 		// Print critical styles to header.
 		add_action( 'wp_head', array( $this, 'print_critical_styles' ) );
@@ -19,7 +25,7 @@ class Genesis_Simple_FAQ_Assets {
 		// Register and maybe load scripts.
 		add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ) );
 
-    }
+	}
 
 	/**
 	 * Function to register plugin assets for later enqueuing.
@@ -38,8 +44,8 @@ class Genesis_Simple_FAQ_Assets {
 			? 'jquery.genesis-simple-faq.js'
 			: 'min/jquery.genesis-simple-faq.min.js';
 
-		wp_register_script( 'gs-faq-jquery-js',  plugin_dir_url( __FILE__ ) . '../assets/js/' . $jquery_path,  array( 'jquery' ), Genesis_Simple_FAQ()->plugin_version, true );
-		wp_register_script( 'gs-faq-vanilla-js', plugin_dir_url( __FILE__ ) . '../assets/js/' . $vanilla_path, array(),           Genesis_Simple_FAQ()->plugin_version, true );
+		wp_register_script( 'gs-faq-jquery-js', plugin_dir_url( __FILE__ ) . '../assets/js/' . $jquery_path, array( 'jquery' ), Genesis_Simple_FAQ()->plugin_version, true );
+		wp_register_script( 'gs-faq-vanilla-js', plugin_dir_url( __FILE__ ) . '../assets/js/' . $vanilla_path, array(), Genesis_Simple_FAQ()->plugin_version, true );
 
 	}
 
@@ -78,7 +84,7 @@ class Genesis_Simple_FAQ_Assets {
 
 		$print = apply_filters( 'gs_faq_print_styles', true );
 
-		if ( $print === false ) {
+		if ( false === $print ) {
 			return;
 		}
 
@@ -120,9 +126,16 @@ class Genesis_Simple_FAQ_Assets {
 				display: block;
 			}';
 
-		$css = sprintf( '<style type="text/css" id="gs-faq-critical">%s</style>', apply_filters( 'gs_faq_critical_styles', $this->minifyCSS( $styles ) ) );
+		$css = sprintf( '<style type="text/css" id="gs-faq-critical">%s</style>', apply_filters( 'gs_faq_critical_styles', $this->minify_css( $styles ) ) );
 
-		echo $css;
+		$allowed_tags = array(
+			'style' => array(
+				'type' => array(),
+				'id'   => array(),
+			),
+		);
+
+		echo wp_kses( $css, $allowed_tags );
 
 	}
 
@@ -134,8 +147,8 @@ class Genesis_Simple_FAQ_Assets {
 	 *
 	 * @since 0.9.0
 	 */
-	private function minifyCSS( $css ) {
-		return str_replace('; ',';',str_replace(' }','}',str_replace('{ ','{',str_replace(array("\r\n","\r","\n","\t",'  ','    ','    '),"",preg_replace('!/\*[^*]*\*+([^/][^*]*\*+)*/!','',$css)))));
+	private function minify_css( $css ) {
+		return str_replace( '; ', ';', str_replace( ' }', '}', str_replace( '{ ', '{', str_replace( array( "\r\n", "\r", "\n", "\t", '  ', '    ', '    ' ), '', preg_replace( '!/\*[^*]*\*+([^/][^*]*\*+)*/!', '', $css ) ) ) ) );
 	}
 
 }

@@ -1,5 +1,11 @@
 <?php
 /**
+ * Genesis Simple FAQ shortcode class.
+ *
+ * @package genesis-simple-faq
+ */
+
+/**
  * Class to handle shortcode creation, rendering, and asset loading.
  *
  * @since 0.9.0
@@ -26,19 +32,23 @@ class Genesis_Simple_FAQ_Shortcode {
 	/**
 	 * Shortcode builder function.
 	 *
-	 * @param  array   $atts    Array of passed in attributes.
-	 * @param  array   $content The content the shortcode is wrapped around.
+	 * @param  array $atts    Array of passed in attributes.
+	 *
 	 * @return string  $faq     String of HTML to output.
 	 *
 	 * @since 0.9.0
 	 */
-	function shortcode( $atts ) {
+	public function shortcode( $atts ) {
 
-		$a = shortcode_atts( array(
-			'id'    => '',
-			'cat'   => '',
-			'limit' => -1,
-		), $atts );
+		$a = shortcode_atts(
+			array(
+				'id'    => '',
+				'cat'   => '',
+				'limit' => -1,
+				'order' => 'DESC',
+			),
+			$atts
+		);
 
 		// If IDs are set, use them. Otherwise retrieve all.
 		$ids = '' !== $a['id'] ? explode( ',', $a['id'] ) : array();
@@ -48,13 +58,14 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		$args = array(
 			'orderby'        => 'post__in',
+			'order'          => $a['order'],
 			'post_type'      => 'gs_faq',
 			'post__in'       => $ids,
 			'posts_per_page' => $a['limit'],
 		);
 
 		if ( $cats ) {
-			$args['tax_query'] = array(
+			$args['tax_query'] = array( // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_tax_query
 				array(
 					'terms'    => $cats,
 					'taxonomy' => 'gs_faq_categories',
@@ -78,7 +89,7 @@ class Genesis_Simple_FAQ_Shortcode {
 				$template = sprintf(
 					'<button class="gs-faq__question" type="button">%1$s</button><div class="gs-faq__answer no-animation"><h2 class="gs-faq__answer__heading">%1$s</h2>%2$s</div>',
 					esc_html( $question ),
-					$answer
+					do_shortcode( $answer )
 				);
 
 				// Allow filtering of the template markup.
@@ -89,7 +100,7 @@ class Genesis_Simple_FAQ_Shortcode {
 
 		}
 
-		wp_reset_query();
+		wp_reset_postdata();
 
 		return $output;
 
