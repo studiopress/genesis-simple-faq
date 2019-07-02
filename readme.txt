@@ -137,6 +137,7 @@ function your_custom_function( $template, $question, $answer ) {
 * Update the code to comply with WordPress coding standards.
 * Add order attribute.
 * Add compatibility for taxonomy with Gutenberg.
+* Process shortcode in answers.
 
 = 0.9.1 =
 
