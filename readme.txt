@@ -132,6 +132,12 @@ function your_custom_function( $template, $question, $answer ) {
 
 == Changelog ==
 
+= 1.0.0 =
+
+* Update the code to comply with WordPress coding standards.
+* Add order attribute.
+* Add compatibility for taxonomy with Gutenberg.
+
 = 0.9.1 =
 
 * Add non-JS support.
