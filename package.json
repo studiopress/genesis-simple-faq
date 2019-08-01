@@ -6,12 +6,8 @@
     "type": "git",
     "url": "https://github.com/studiopress/genesis-simple-faq"
   },
-  "devDependencies": {
-    "node-wp-i18n": "^1.2.3"
-  },
   "scripts": {
-    "makepot": "wpi18n makepot --exclude=vendor,node_modules",
-    "addtextdomain": "wpi18n addtextdomain --exclude=vendor,node_modules"
+    "makepot": "composer makepot"
   },
   "plugin": {
     "name": "Genesis Simple FAQ",
