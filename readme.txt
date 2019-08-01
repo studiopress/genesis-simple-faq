@@ -1,5 +1,5 @@
 === Genesis Simple FAQ ===
-Contributors: studiopress, calvinkoepke, nathanrice, modernnerd
+Contributors: studiopress, calvinkoepke, nathanrice, modernnerd, pr0v4, bgardner, ethanschaffer
 Tags: genesis, faq
 Requires at least: 4.8
 Tested up to: 5.2.2
@@ -136,6 +136,7 @@ function your_custom_function( $template, $question, $answer ) {
 
 * Further testing on more recent versions of WordPress
 * Fix messaging issue when using non-Genesis theme
+* Add POT generation usin wp-cli
 
 = 1.0.0 =
 

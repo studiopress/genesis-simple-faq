@@ -1,25 +1,56 @@
 # Copyright (C) 2019 StudioPress
-# This file is distributed under the GPL-2.0-or-later.
+# This file is distributed under the same license as the Genesis Simple FAQ plugin.
 msgid ""
 msgstr ""
 "Project-Id-Version: Genesis Simple FAQ 1.0.1\n"
-"Report-Msgid-Bugs-To: "
-"https://wordpress.org/support/plugin/genesis-simple-faq\n"
-"POT-Creation-Date: 2019-07-31 15:52:25+00:00\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2019-MO-DA HO:MI+ZONE\n"
+"Report-Msgid-Bugs-To: StudioPress <translations@studiopress.com>\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: node-wp-i18n 1.2.3\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2019-08-01T18:41:31+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.1.0\n"
+"X-Domain: genesis-simple-faq\n"
+
+#. Plugin Name of the plugin
+#: includes/class-genesis-simple-faq-cpt.php:49
+#: includes/class-genesis-simple-faq-widget.php:51
+msgid "Genesis Simple FAQ"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://wordpress.org/plugins/genesis-simple-faq/"
+msgstr ""
+
+#. Description of the plugin
+msgid "A plugin for the Genesis Framework to manage FAQ components via shortcodes."
+msgstr ""
+
+#. Author of the plugin
+msgid "StudioPress"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://www.studiopress.com/"
+msgstr ""
+
+#: includes/class-genesis-simple-faq.php:131
+msgid "upgrade to"
+msgstr ""
+
+#: includes/class-genesis-simple-faq.php:131
+msgid "install and activate"
+msgstr ""
+
+#. translators: 1 is the Plugin name, 2 is the minimum WordPress version, 4 is the Genesis download link and 4 is action, upgrade or install.
+#: includes/class-genesis-simple-faq.php:134
+msgid "%1$s requires WordPress %2$s and <a href=\"%3$s\" target=\"_blank\">Genesis %4$s</a>, or greater. Please %5$s the latest version of Genesis to use this plugin."
+msgstr ""
 
 #: includes/class-genesis-simple-faq-cpt.php:48
 msgid "Genesis Simple FAQs"
-msgstr ""
-
-#. Plugin Name of the plugin/theme
-msgid "Genesis Simple FAQ"
 msgstr ""
 
 #: includes/class-genesis-simple-faq-cpt.php:50
@@ -70,8 +101,8 @@ msgstr ""
 msgid "Uploaded to this FAQ"
 msgstr ""
 
-#: includes/class-genesis-simple-faq-cpt.php:96
 #. translators: Revision version.
+#: includes/class-genesis-simple-faq-cpt.php:96
 msgid "FAQ restored to revision from %s"
 msgstr ""
 
@@ -100,8 +131,8 @@ msgstr ""
 msgid "FAQ submitted."
 msgstr ""
 
-#: includes/class-genesis-simple-faq-cpt.php:109
 #. translators: Date publish to publish the FAQ
+#: includes/class-genesis-simple-faq-cpt.php:109
 msgid "FAQ scheduled for: <strong>%1$s</strong>."
 msgstr ""
 
@@ -116,10 +147,6 @@ msgstr ""
 #: includes/class-genesis-simple-faq-cpt.php:141
 #: includes/class-genesis-simple-faq-taxonomy.php:64
 msgid "Shortcode"
-msgstr ""
-
-#: includes/class-genesis-simple-faq-taxonomy.php:31
-msgid "Categories"
 msgstr ""
 
 #: includes/class-genesis-simple-faq-widget.php:42
@@ -142,40 +169,6 @@ msgstr ""
 msgid "Choose a category."
 msgstr ""
 
-#: includes/class-genesis-simple-faq.php:131
-msgid "upgrade to"
-msgstr ""
-
-#: includes/class-genesis-simple-faq.php:131
-msgid "install and activate"
-msgstr ""
-
-#: includes/class-genesis-simple-faq.php:134
-#. translators: 1 is the Plugin name, 2 is the minimum WordPress version, 4 is
-#. the Genesis download link and 4 is action, upgrade or install.
-msgid ""
-"%1$s requires WordPress %2$s and <a href=\"%3$s\" target=\"_blank\">Genesis "
-"%4$s</a>, or greater. Please %5$s the latest version of Genesis to use this "
-"plugin."
-msgstr ""
-
-#. Plugin URI of the plugin/theme
-msgid "https://github.com/studiopress/genesis-simple-faq"
-msgstr ""
-
-#. Description of the plugin/theme
-msgid "A plugin for the Genesis Framework to manage FAQ components via shortcodes."
-msgstr ""
-
-#. Author of the plugin/theme
-msgid "StudioPress"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "https://www.studiopress.com/"
-msgstr ""
-
-#: includes/class-genesis-simple-faq-cpt.php:51
-msgctxt "genesis-simple-faq"
-msgid "Add New"
+#: includes/class-genesis-simple-faq-taxonomy.php:31
+msgid "Categories"
 msgstr ""

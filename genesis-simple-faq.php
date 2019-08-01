@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Genesis Simple FAQ
- * Plugin URI: https://github.com/studiopress/genesis-simple-faq
+ * Plugin URI: https://wordpress.org/plugins/genesis-simple-faq/
  *
  * Description: A plugin for the Genesis Framework to manage FAQ components via shortcodes.
  *
