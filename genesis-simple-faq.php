@@ -8,7 +8,7 @@
  * Author: StudioPress
  * Author URI: https://www.studiopress.com/
  *
- * Version: 1.0.0
+ * Version: 1.0.1
  *
  * Text Domain: genesis-simple-faq
  * Domain Path: /languages
@@ -19,7 +19,7 @@
  * @package genesis-simple-faq
  */
 
-define( 'GENESIS_SIMPLE_PLUGIN_VERSION', '1.0.0' );
+define( 'GENESIS_SIMPLE_PLUGIN_VERSION', '1.0.1' );
 define( 'GENESIS_SIMPLE_FAQ_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GENESIS_SIMPLE_FAQ_URL', plugins_url( '', __FILE__ ) );
 

@@ -126,7 +126,7 @@ final class Genesis_Simple_FAQ {
 
 		if ( ! defined( 'PARENT_THEME_VERSION' ) || ! version_compare( PARENT_THEME_VERSION, $this->min_genesis_version, '>=' ) ) {
 
-			$plugin = get_plugin_data( __FILE__ );
+			$plugin = get_plugin_data( $this->plugin_dir_path . 'genesis-simple-faq.php' );
 
 			$action = defined( 'PARENT_THEME_VERSION' ) ? __( 'upgrade to', 'genesis-simple-faq' ) : __( 'install and activate', 'genesis-simple-faq' );
 
