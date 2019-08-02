@@ -136,9 +136,6 @@ function your_custom_function( $template, $question, $answer ) {
 
 * Further testing on more recent versions of WordPress
 * Fix messaging issue when using non-Genesis theme
-
-= 1.0.0 =
-
 * Update the code to comply with WordPress coding standards.
 * Add order attribute.
 * Add compatibility for taxonomy with Gutenberg.
