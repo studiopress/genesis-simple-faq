@@ -3,7 +3,7 @@ Contributors: studiopress, calvinkoepke, nathanrice, modernnerd
 Tags: genesis, faq
 Requires at least: 4.8
 Tested up to: 5.2.2
-Stable tag: 1.0.1
+Stable tag: 0.9.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -132,7 +132,7 @@ function your_custom_function( $template, $question, $answer ) {
 
 == Changelog ==
 
-= 1.0.1 =
+= 0.9.2 =
 
 * Further testing on more recent versions of WordPress
 * Fix messaging issue when using non-Genesis theme
