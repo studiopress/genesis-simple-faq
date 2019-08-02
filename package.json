@@ -1,7 +1,7 @@
 {
   "name": "genesis-simple-faq",
   "description": "A simple plugin for the Genesis Framework to manage FAQ components.",
-  "version": "1.0.1",
+  "version": "0.9.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/studiopress/genesis-simple-faq"
@@ -15,7 +15,7 @@
     "description": "A simple plugin for the Genesis Framework to manage FAQ components.",
     "author": "StudioPress",
     "authoruri": "https://www.studiopress.com/",
-    "version": "1.0.1",
+    "version": "0.9.2",
     "license": "GPL-2.0+",
     "licenseuri": "http://www.gnu.org/licenses/gpl-2.0.html",
     "textdomain": "genesis-simple-faq"
