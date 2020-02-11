@@ -9,7 +9,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2019-08-02T17:46:30+00:00\n"
+"POT-Creation-Date: 2020-02-11T18:05:12+01:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.1.0\n"
 "X-Domain: genesis-simple-faq\n"
@@ -44,7 +44,7 @@ msgstr ""
 msgid "install and activate"
 msgstr ""
 
-#. translators: 1 is the Plugin name, 2 is the minimum WordPress version, 4 is the Genesis download link and 4 is action, upgrade or install.
+#. translators: 1 is the Plugin name, 2 is the minimum WordPress version, 3 is the Genesis download link, 4 is the minimum WordPress version and 5 is action, upgrade or install.
 #: includes/class-genesis-simple-faq.php:134
 msgid "%1$s requires WordPress %2$s and <a href=\"%3$s\" target=\"_blank\">Genesis %4$s</a>, or greater. Please %5$s the latest version of Genesis to use this plugin."
 msgstr ""
@@ -167,6 +167,10 @@ msgstr ""
 
 #: includes/class-genesis-simple-faq-widget.php:175
 msgid "Choose a category."
+msgstr ""
+
+#: includes/class-genesis-simple-faq-widget.php:183
+msgid "All Categories"
 msgstr ""
 
 #: includes/class-genesis-simple-faq-taxonomy.php:31
