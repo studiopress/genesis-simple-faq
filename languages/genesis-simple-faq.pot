@@ -44,7 +44,7 @@ msgstr ""
 msgid "install and activate"
 msgstr ""
 
-#. translators: 1 is the Plugin name, 2 is the minimum WordPress version, 3 is the Genesis download link, 4 is the minimum WordPress version and 5 is action, upgrade or install.
+#. translators: 1 is the Plugin name, 2 is the minimum WordPress version, 3 is the Genesis download link, 4 is the minimum Genesis version and 5 is action, upgrade or install.
 #: includes/class-genesis-simple-faq.php:134
 msgid "%1$s requires WordPress %2$s and <a href=\"%3$s\" target=\"_blank\">Genesis %4$s</a>, or greater. Please %5$s the latest version of Genesis to use this plugin."
 msgstr ""
