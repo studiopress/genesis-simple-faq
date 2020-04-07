@@ -9,6 +9,13 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 A simple plugin to handle FAQ layout and interaction with a shortcode.
 
+== DEPRECATION NOTICE ==
+This plugin is now deprecated and will no longer receive feature updates.
+
+Alternatives:
+- Block Editor users: build an FAQ page with the <a href="https://wordpress.org/plugins/atomic-blocks">Atomic Blocks plugin</a> using the <a href="https://atomicblocks.com/blocks/accordion-block/">Accordion block</a>.
+- Classic Editor users: check out the wide range of <a href="https://wordpress.org/plugins/search/faq/">other FAQ plugins</a>.
+
 == Installation ==
 
 1. Upload the plugin files to the `/wp-content/plugins/plugin-name` directory, or install the plugin through the WordPress plugins screen directly.
