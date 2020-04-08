@@ -2,12 +2,19 @@
 Contributors: studiopress, calvinkoepke, nathanrice, modernnerd
 Tags: genesis, faq
 Requires at least: 4.8
-Tested up to: 5.2.2
+Tested up to: 5.4
 Stable tag: 0.9.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 A simple plugin to handle FAQ layout and interaction with a shortcode.
+
+== DEPRECATION NOTICE ==
+This plugin is now deprecated and will no longer receive feature updates.
+
+Alternatives:
+- Block Editor users: build an FAQ page with the <a href="https://wordpress.org/plugins/atomic-blocks">Atomic Blocks plugin</a> using the <a href="https://atomicblocks.com/blocks/accordion-block/">Accordion block</a>.
+- Classic Editor users: check out the wide range of <a href="https://wordpress.org/plugins/search/faq/">other FAQ plugins</a>.
 
 == Installation ==
 

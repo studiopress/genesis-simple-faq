@@ -1,5 +1,13 @@
 # Genesis Simple FAQ
+
 A simple plugin to handle FAQ layout and interaction with a shortcode.
+
+## DEPRECATION NOTICE
+This plugin is now deprecated and will no longer receive feature updates.
+
+Alternatives:
+- Block Editor users: build an FAQ page with the [Atomic Blocks plugin](https://wordpress.org/plugins/atomic-blocks/) using the [Accordion block](https://atomicblocks.com/blocks/accordion-block/).
+- Classic Editor users: check out the wide range of [other FAQ plugins](https://wordpress.org/plugins/search/faq/).
 
 ## Usage
 Adding a FAQ is easy and relies on custom post types to organize and format your FAQs. To add an FAQ, do the following:
