@@ -180,7 +180,7 @@ class Genesis_Simple_FAQ_Widget extends WP_Widget {
 					'name'            => $this->get_field_name( 'taxonomy' ),
 					'taxonomy'        => 'gs_faq_categories',
 					'selected'        => $instance['taxonomy'],
-					'show_option_all' => 'All Categories',
+					'show_option_all' => __( 'All Categories', 'genesis-simple-faq' ),
 				)
 			);
 			?>
